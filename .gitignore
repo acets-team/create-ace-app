@@ -1,0 +1,6 @@
+notes.md
+.ace
+node_modules
+cli.js
+app.config.timestamp*
+.env

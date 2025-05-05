@@ -1,0 +1,10 @@
+{
+   "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./",
+    "module": "NodeNext",
+    "target": "ES2017",
+    "moduleResolution": "NodeNext"
+  },
+  "files": ["cli.ts"]
+}

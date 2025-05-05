@@ -1,0 +1,58 @@
+main.smooth {
+  width: 100%;
+  max-width: 60rem;
+  margin: 3rem auto 0 auto;
+  position: relative;
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin: var(--space) 0;
+  
+    a {
+      display: flex;
+      gap: 1.2rem;
+      text-align: center;
+      padding: 1.2rem 1.5rem;
+      align-items: center;
+      justify-content: center;
+      &.active {
+        color: var(--link-color);
+      }
+    }
+  }
+
+  ol {
+    margin-bottom: var(--space);
+    text-align: center;
+    list-style-position: inside;
+  }
+
+  .characters {
+    width: 100%;
+    display: flex;
+    gap: 1.8rem;
+    justify-content: space-between;
+
+    .character {
+      flex: 1;
+      min-height: 3rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.8rem;
+
+      .shine {
+        width: 100%;
+        height: 1.8rem;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.hr {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin: var(--space) 0;
+  width: 100%;
+}

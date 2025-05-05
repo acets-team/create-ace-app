@@ -1,0 +1,42 @@
+{
+  "name": "create-ace-app",
+  "license": "MIT",
+  "type": "module",
+  "version": "0.0.1",
+  "author": "https://github.com/acets-team",
+  "homepage": "https://github.com/acets-team/create-ace-app#readme",
+  "description": "👋 'Create Ace App' is our 1 liner to create an Ace App! & Ace provides Solid Fundamentals... For those that ❤️ fine grained reactivity AND in-editor autocomplete! 🙏",
+  "bin": {
+    "create-ace-app": "./cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/acets-team/create-ace-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acets-team/create-ace-app.git"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run build-cli",
+    "dev": "ace build local && vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "publish": "npm publish --access public",
+    "build-cli": "ace build local && tsc -p cli.tsconfig.json && (chmod +x cli.js || true)"
+  },
+  "devDependencies": {
+    "@acets-team/ace": "^0.0.3",
+    "@solid-cli/core": "^0.0.26",
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.15.0",
+    "@solidjs/start": "^1.1.0",
+    "@types/node": "^22.14.1",
+    "solid-js": "^1.9.5"
+  },
+  "keywords": [
+    "solid",
+    "solidjs",
+    "ace",
+    "wizard"
+  ]
+}

@@ -1,0 +1,14 @@
+div.welcome {
+  max-width: 57rem;
+  position: relative;
+  margin: var(--space) auto 0 auto;
+
+  .stars {
+    position: absolute;
+    padding: 0.9rem;
+    top: 0.9rem;
+    left: 50%;
+    margin-left: -0.3rem;
+    width: 0.6reem;
+  }
+}

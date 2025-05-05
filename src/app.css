@@ -1,0 +1,92 @@
+:root {
+  --space: 3rem;
+  --speed: all 0.3s ease;
+  --text-color: #f0f0f0;
+  --link-color: #00d8ff;
+}
+
+body,
+html,
+#app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #121212;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+html {
+  font-size: 62.5%; /* https://stackoverflow.com/questions/59920538 */
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+#app {
+  margin-top: 4.5rem;
+}
+
+
+body,
+button {
+  font-size: 1.71rem;
+  line-height: 1.41;
+  color: var(--text-color);
+}
+
+a.brand,
+button.brand {
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: #1e1e1e;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: var(--speed);
+  border: 1px solid #333;
+  user-select: none;
+  &:hover {
+    background-color: #2a2a2a;
+    color: #00d8ff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(0, 216, 255, 0.1);
+  }
+  &.gold {
+    background-color: #2a2a2a;
+    color: #f5c518;
+    box-shadow: 0 4px 20px rgba(245,197,24,0.3);
+    transform: translateY(-3px);
+    &:hover {
+      background-color: #3a3200;;
+      color: #fec701;
+    }
+
+    .load-spin {
+      border-top-color: #f5c518;
+    }
+  }
+}
+
+.title  {
+  font-size: 3.3rem;
+  margin-bottom: 2.1rem;
+  text-align: center;
+}
+
+ol {
+  list-style-position: inside;
+  text-align: center;
+  padding-left: 0;
+}
+
+.welcome-emoji {
+  position: absolute;
+  padding: 0.9rem;
+  top: -3rem;
+  left: 50%;
+  margin-left: -1.5rem;
+  width: 3rem;
+}
