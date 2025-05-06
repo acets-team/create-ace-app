@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "author": "https://github.com/acets-team",
   "homepage": "https://github.com/acets-team/create-ace-app#readme",
-  "description": "👋 'Create Ace App' is our 1 liner to create an Ace App! & Ace provides Solid Fundamentals... For those that ❤️ fine grained reactivity AND in-editor autocomplete! 🙏",
+  "description": "👋 Create Ace App is our 1 liner to create an Ace App! & Ace provides Solid Fundamentals... For those that ❤️ fine grained reactivity AND in-editor autocomplete! 🙏",
   "bin": {
     "create-ace-app": "./cli.js"
   },
@@ -25,7 +25,7 @@
     "build-cli": "ace build local && tsc -p cli.tsconfig.json && (chmod +x cli.js || true)"
   },
   "devDependencies": {
-    "@acets-team/ace": "^0.0.3",
+    "@acets-team/ace": "^0.0.5",
     "@solid-cli/core": "^0.0.26",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",

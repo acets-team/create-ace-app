@@ -24,9 +24,8 @@ npm install acets @types/node -D
 {
   "paths": {
     "@src/*": ["./src/*"],
-    "ace.config": ["./ace.config.js"],
+    "ace.config": ["ace.config.js"],
     "@ace/*": ["./.ace/fundamentals/*"],
-    "@ace/apis": ["./.ace/fundamentals/apis.be.ts"]
   }
 }
 ```
@@ -36,12 +35,11 @@ npm install acets @types/node -D
 ### Update Vite Config
 - @ `./app.config.ts`
 ```ts
+import { resolveAlias } from './.ace/resolveAlias'
 import { defineConfig } from '@solidjs/start/config'
-import { resolveAlias } from './.ace/fundamentals/resolveAlias'
 
 
 export default defineConfig({
-  middleware: './src/lib/middleware.ts',
   vite({ router }) {
     return {
       resolve: {
@@ -173,12 +171,12 @@ export async function POST(event: APIEvent) {
     ```
   - Add `middleware` to config @ `./app.config.ts`, example:
     ```ts
+    import { resolveAlias } from './.ace/resolveAlias'
     import { defineConfig } from '@solidjs/start/config'
-    import { resolveAlias } from './.ace/fundamentals/resolveAlias'
 
 
     export default defineConfig({
-      middleware: './src/lib/middleware.ts', // NEW!
+      middleware: './src/lib/middleware.ts',
       vite({ router }) {
         return {
           resolve: {

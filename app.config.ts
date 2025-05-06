@@ -1,6 +1,6 @@
 
+import { resolveAlias } from './.ace/resolveAlias'
 import { defineConfig } from '@solidjs/start/config'
-import { resolveAlias } from './.ace/fundamentals/resolveAlias'
 
 
 export default defineConfig({

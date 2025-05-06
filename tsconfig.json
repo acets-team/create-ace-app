@@ -15,9 +15,8 @@
     "isolatedModules": true,
     "paths": {
       "@src/*": ["./src/*"],
-      "ace.config": ["./ace.config.js"],
+      "ace.config": ["ace.config.js"],
       "@ace/*": ["./.ace/fundamentals/*"],
-      "@ace/apis": ["./.ace/fundamentals/apis.be.ts"]
     }
   }
 }
