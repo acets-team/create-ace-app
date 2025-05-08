@@ -1,7 +1,7 @@
 import './Fortunes.css'
-import { Title } from '@solidjs/meta'
 import '@ace/loadSpin.styles'
 import { Route } from '@ace/route'
+import { Title } from '@solidjs/meta'
 import RootLayout from '../../RootLayout'
 import WelcomeLayout from '../WelcomeLayout'
 import { createSignal, For, Show } from 'solid-js'

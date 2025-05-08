@@ -13,7 +13,7 @@ npx create-ace-app@latest
 ```bash
 nvm use 22
 npm create solid # basic / typescript
-npm install acets @types/node -D
+npm install @acets-team/ace @types/node -D
 ```
 
 
@@ -60,7 +60,7 @@ export default defineConfig({
 
 
 
-![Animals developing software in the safari](https://i.imgur.com/9WBk7EM.png)
+![Sloths writing code](https://i.imgur.com/dDOo5DS.jpeg)
 
 
 

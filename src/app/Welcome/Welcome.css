@@ -1,4 +1,4 @@
-div.welcome {
+.welcome-layout {
   max-width: 57rem;
   position: relative;
   margin: var(--space) auto 0 auto;

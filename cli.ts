@@ -34,7 +34,7 @@ class Build {
   template = ''
   projectName = ''
 
-  createPackageDotJson() {
+  renderPackageDotJson() {
     return {
       name: this.projectName,
       type: 'module',
@@ -47,7 +47,7 @@ class Build {
         start: 'vinxi start',
       },
       devDependencies: {
-        '@acets-team/ace': '^0.0.6',
+        '@acets-team/ace': '^0.0.7',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.0',
         '@solidjs/start': '^1.1.0',
@@ -85,14 +85,14 @@ class Build {
       cp(join(__dirname, 'src'), join(newProjectDir, 'src'), { recursive: true }),
       cp(join(__dirname, 'public'), join(newProjectDir, 'public'), { recursive: true }),
       writeFile(join(newProjectDir, '.env'), `SESSION_CRYPT_PASSWORD=${ crypto.randomUUID() }`, 'utf8'),
-      writeFile(join(newProjectDir, 'package.json'), JSON.stringify(this.createPackageDotJson(), null, 2), 'utf8'),
-      writeFile(join(newProjectDir, '.gitignore'), `.env
-node_modules
-app.config.timestamp*`, 'utf8'),
+      writeFile(join(newProjectDir, 'package.json'), JSON.stringify(this.renderPackageDotJson(), null, 2), 'utf8'),
+      writeFile(join(newProjectDir, '.gitignore'), this.renderGitIgnore(), 'utf8'),
+      writeFile(join(newProjectDir, 'wrangler.toml'), this.renderWranglerDotToml(), 'utf8'),
     )
 
     await Promise.all(writePromises)
   }
+
 
 
   checkNodeVersion() {
@@ -188,6 +188,21 @@ ${cuteString('💖 Thanks for creating w/ Ace! ✨ Docs: https://github.com/acet
     console.error(err)
     process.exit(1)
   }
+
+
+  renderGitIgnore() {
+    return `.env
+.vinxi
+.output
+node_modules
+app.config.timestamp*\n`
+  }
+
+
+  renderWranglerDotToml() {
+    return `name = "${this.projectName}"
+compatibility_date = "${getWranglerCompatabilityDate()}"\n`
+  }
 }
 
 
@@ -201,4 +216,22 @@ async function pathExists(path: PathLike): Promise<boolean> {
   } catch {
     return false
   }
+}
+
+
+/**
+ * 1) Get the current utc date
+ * 2) Subtract 3 days
+ * 3) Give back in the format "2025-01-30" aka Year-Month-Day
+ */
+function getWranglerCompatabilityDate(): string {
+  const now = new Date()
+  const utcDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()))
+  utcDate.setUTCDate(utcDate.getUTCDate() - 3)
+
+  const year = utcDate.getUTCFullYear()
+  const month = String(utcDate.getUTCMonth() + 1).padStart(2, '0')
+  const day = String(utcDate.getUTCDate()).padStart(2, '0')
+
+  return `${year}-${month}-${day}`
 }

@@ -1,5 +1,6 @@
 :root {
   --space: 3rem;
+  --space-lite: 1.5rem;
   --speed: all 0.3s ease;
   --text-color: #f0f0f0;
   --link-color: #00d8ff;

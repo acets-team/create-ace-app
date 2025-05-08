@@ -1,6 +1,6 @@
+import { Route } from '@ace/route'
 import { Title } from '@solidjs/meta'
 import RootLayout from '../RootLayout'
-import { Route } from '@ace/route'
 import WelcomeLayout from './WelcomeLayout'
 
 

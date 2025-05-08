@@ -1,5 +1,7 @@
 notes.md
 .ace
+.vinxi
+.output
 node_modules
 cli.js
 app.config.timestamp*
