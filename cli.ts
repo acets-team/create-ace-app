@@ -47,7 +47,7 @@ class Build {
         start: 'vinxi start',
       },
       devDependencies: {
-        '@acets-team/ace': '^0.0.7',
+        '@acets-team/ace': '^0.0.8',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.0',
         '@solidjs/start': '^1.1.0',
