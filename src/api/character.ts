@@ -7,8 +7,7 @@ import { randomBetween } from '@ace/randomBetween'
 import { characters, elementEnums } from '@src/lib/vars'
 
 
-export const GET = new API('/api/character/:element')
-  .fn('apiCharacter')
+export const GET = new API('/api/character/:element', 'apiCharacter')
   .params<{ element: InferEnums<typeof elementEnums> }>()
   .resolve(async (be) => {
     const params = be.getParams()

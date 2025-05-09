@@ -4,7 +4,7 @@ import { holdUp } from '@ace/holdUp'
 import { parseNumber } from '@ace/parseNumber'
 
 
-export const GET = new API('/api/fortune/:id')
+export const GET = new API('/api/fortune/:id', 'apiFortune')
   .params<{ id: number }>()
   .resolve(async (be) => {
     const params = be.getParams()

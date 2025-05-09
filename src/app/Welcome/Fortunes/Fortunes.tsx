@@ -2,11 +2,12 @@ import './Fortunes.css'
 import '@ace/loadSpin.styles'
 import { Route } from '@ace/route'
 import { Title } from '@solidjs/meta'
+import { apiFortune } from '@ace/apis'
 import RootLayout from '../../RootLayout'
 import WelcomeLayout from '../WelcomeLayout'
 import { createSignal, For, Show } from 'solid-js'
-import { fortunes as allFortunes } from '@src/lib/vars'
 import { randomBetween } from '@ace/randomBetween'
+import { fortunes as allFortunes } from '@src/lib/vars'
 import { AnimatedFor, ForAnimator } from '@ace/animatedFor'
 
 
@@ -21,7 +22,7 @@ export default new Route('/fortunes')
 
       const params = { id: randomBetween(0, allFortunes.length - 1) } 
 
-      const res = await fe.GET('/api/fortune/:id', {params, bitKey: 'fortune'}) // call BE api
+      const res = await apiFortune({params, bitKey: 'fortune'})
 
       if (res.error) alert(res.error.message)
 

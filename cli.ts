@@ -47,7 +47,7 @@ class Build {
         start: 'vinxi start',
       },
       devDependencies: {
-        '@acets-team/ace': '^0.0.8',
+        '@acets-team/ace': '^0.0.9',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.0',
         '@solidjs/start': '^1.1.0',
@@ -84,7 +84,7 @@ class Build {
     writePromises.push(
       cp(join(__dirname, 'src'), join(newProjectDir, 'src'), { recursive: true }),
       cp(join(__dirname, 'public'), join(newProjectDir, 'public'), { recursive: true }),
-      writeFile(join(newProjectDir, '.env'), `SESSION_CRYPT_PASSWORD=${ crypto.randomUUID() }`, 'utf8'),
+      writeFile(join(newProjectDir, '.env'), `ENV=local\nSESSION_CRYPT_PASSWORD=${ crypto.randomUUID() }`, 'utf8'),
       writeFile(join(newProjectDir, 'package.json'), JSON.stringify(this.renderPackageDotJson(), null, 2), 'utf8'),
       writeFile(join(newProjectDir, '.gitignore'), this.renderGitIgnore(), 'utf8'),
       writeFile(join(newProjectDir, 'wrangler.toml'), this.renderWranglerDotToml(), 'utf8'),
