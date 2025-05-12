@@ -18,5 +18,9 @@
       "ace.config": ["ace.config.js"],
       "@ace/*": ["./.ace/fundamentals/*"],
     }
-  }
+  },
+  "include": [
+    "src/**/*",
+    ".ace/**/*"
+  ]
 }

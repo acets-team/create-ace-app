@@ -18,21 +18,40 @@ npm install @acets-team/ace @types/node -D
 
 
 
-### Update Typescript Config
+### Set Typescript Config
 - @ `./tsconfig.json`
 ```json
 {
-  "paths": {
-    "@src/*": ["./src/*"],
-    "ace.config": ["ace.config.js"],
-    "@ace/*": ["./.ace/fundamentals/*"],
-  }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "types": ["vinxi/types/client"],
+    "isolatedModules": true,
+    "paths": {
+      "@src/*": ["./src/*"],
+      "ace.config": ["ace.config.js"],
+      "@ace/*": ["./.ace/fundamentals/*"],
+    }
+  },
+  "include": [
+    "src/**/*",
+    ".ace/**/*"
+  ]
 }
 ```
 
 
 
-### Update Vite Config
+### Set Vite Config
 - @ `./app.config.ts`
 ```ts
 import { resolveAlias } from './.ace/resolveAlias'
@@ -91,7 +110,6 @@ export const config = {
  * @property {string} userId
  * @property {string} sessionId
  */
-
 ```
 
 

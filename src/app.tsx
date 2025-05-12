@@ -1,4 +1,4 @@
 import './app.css'
-import { createApp } from '@ace/app'
+import { createApp } from '@ace/createApp'
 
 export default createApp()
