@@ -13,9 +13,8 @@ export default new Route('/')
       <div class="title">Home 🏡</div>
 
       <ol>
-        <li>When count is clicked, it is the only element that renders again! 🥹</li>
-        <li>& count's state is maintained between pages thanks to layouts! ✅</li>
-        <li>Layouts, Contexts & Stores are all lovely options to achieve this! ❤️</li>
+        <li>Click count ➡️ Fine grained reactivity! 🥹</li>
+        <li>Navigate page ➡️ The count remains! ✅</li>
       </ol>
     </>
   })
