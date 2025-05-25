@@ -6,8 +6,10 @@ nav {
   margin-bottom: var(--space);
   padding: 0.9rem;
 
-  .active {
-    color: var(--link-color);
+  a {
+    &.active, &:hover {
+     color: #00d8ff !important;
+    }
   }
 
   a, button {

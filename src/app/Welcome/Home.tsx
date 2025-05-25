@@ -15,6 +15,7 @@ export default new Route('/')
       <ol>
         <li>Click count ➡️ Fine grained reactivity! 🥹</li>
         <li>Navigate page ➡️ The count remains! ✅</li>
+        <li>Navigate page ➡️ Nav animation continues! 💫</li>
       </ol>
     </>
   })

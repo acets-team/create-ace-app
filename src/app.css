@@ -38,17 +38,29 @@ button {
 }
 
 a.brand,
-button.brand {
+button.brand,
+.ace-tabs.pill .tabs .tab {
   font-weight: 500;
   color: var(--text-color);
-  background-color: #1e1e1e;
-  padding: 1rem 1.5rem;
   border-radius: 10px;
-  color: #ffffff;
   text-decoration: none;
   transition: var(--speed);
-  border: 1px solid #333;
   user-select: none;
+  padding: 0.9rem 1.5rem;
+}
+
+a.brand,
+button.brand,
+.ace-tabs.pill .marker {
+  border: 1px solid #333;
+  background-color: #1e1e1e;
+}
+
+
+a.brand,
+button.brand {
+  color: #ffffff;
+  border-radius: 999px;
   &:hover {
     background-color: #2a2a2a;
     color: #00d8ff;

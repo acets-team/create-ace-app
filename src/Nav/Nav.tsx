@@ -1,15 +1,22 @@
 import './Nav.css'
-import { A } from '@ace/a'
-import Counter from '@src/lib/Counter'
+import { Tabs, RouteTab } from '@ace/tabs'
+import { Counter } from '@src/lib/Counter'
 
 
-export default () => {
+export function Nav () {
   return <>
     <nav>
       <Counter />
-      <A path="/" activeClass="active" end={true} class="brand">Home</A>
-      <A path="/fortunes" activeClass="active" class="brand">Fortunes</A>
-      <A path="/smooth" activeClass="active" class="brand">Smooth</A>
+
+      <Tabs
+        mode="route"
+        variant="pill"
+        tabs={[
+          new RouteTab('Home', '/'),
+          new RouteTab('Fortunes', '/fortunes'),
+          new RouteTab('Smooth', '/smooth'),
+        ]}
+      />
     </nav>
   </>
 }

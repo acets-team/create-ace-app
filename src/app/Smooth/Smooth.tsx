@@ -7,7 +7,7 @@ import { Suspense } from 'solid-js'
 import { Title } from '@solidjs/meta'
 import RootLayout from '../RootLayout'
 import { apiCharacter } from '@ace/apis'
-import type { InferParseFn } from '@ace/types'
+import type { InferLoadFn } from '@ace/types'
 import type { elementEnums } from '@src/lib/vars'
 import type { InferEnums } from '@ace/paramEnums'
 import { svg_npm, svg_github } from '@src/lib/svgs'
@@ -48,7 +48,7 @@ function Notice() {
 }
 
 
-function Characters({ res }: { res: Record<InferEnums<typeof elementEnums>, InferParseFn<'apiCharacter'>> }) {
+function Characters({ res }: { res: Record<InferEnums<typeof elementEnums>, InferLoadFn<'apiCharacter'>> }) {
   return <>
     <div class="characters">
       <Character element={res.fire} />
@@ -60,7 +60,7 @@ function Characters({ res }: { res: Record<InferEnums<typeof elementEnums>, Infe
 }
 
 
-function Character({ element }: { element: InferParseFn<'apiCharacter'> }) {
+function Character({ element }: { element: InferLoadFn<'apiCharacter'> }) {
   return <>
     <div class="character">
       <Suspense fallback={<div class="shimmer"></div>}>
