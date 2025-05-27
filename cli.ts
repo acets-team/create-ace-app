@@ -47,12 +47,12 @@ class Build {
         start: 'vinxi start',
       },
       devDependencies: {
-        '@acets-team/ace': '^0.0.10',
+        '@acets-team/ace': '^0.0.13',
         '@solidjs/meta': '^0.29.4',
-        '@solidjs/router': '^0.15.0',
-        '@solidjs/start': '^1.1.0',
-        "@types/node": "^22.14.1",
-        'solid-js': '^1.9.5',
+        '@solidjs/router': '^0.15.3',
+        '@solidjs/start': '^1.1.4',
+        "@types/node": "^22.15.23",
+        'solid-js': '^1.9.7',
         vinxi: '^0.5.3',
       }
     }
