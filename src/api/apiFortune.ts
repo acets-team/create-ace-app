@@ -1,6 +1,6 @@
 import { API } from '@ace/api'
-import { fortunes } from '@src/lib/vars'
 import { holdUp } from '@ace/holdUp'
+import { fortunes } from '@src/lib/vars'
 import { parseNumber } from '@ace/parseNumber'
 
 

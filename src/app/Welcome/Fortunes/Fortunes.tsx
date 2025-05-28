@@ -1,5 +1,5 @@
 import './Fortunes.css'
-import '@ace/loadSpin.styles'
+import '@ace/load.styles.css'
 import { Route } from '@ace/route'
 import { Title } from '@solidjs/meta'
 import { apiFortune } from '@ace/apis'
@@ -40,7 +40,7 @@ export default new Route('/fortunes')
 
         <button onClick={onClick} disabled={fe.bits.isOn('fortune')} class="brand gold">
           <Show when={fe.bits.isOn('fortune')} fallback="Click for Fortunes!">
-            <span class="load-spin--two"></span>
+            <span class="ace-load--two"></span>
           </Show>
         </button>
 

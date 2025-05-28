@@ -1,6 +1,6 @@
 import './Smooth.css'
 import { A } from '@ace/a'
-import '@ace/shimmer.styles'
+import '@ace/shimmer.styles.css'
 import { load } from '@ace/load'
 import { Route } from '@ace/route'
 import { Suspense } from 'solid-js'
@@ -63,7 +63,7 @@ function Characters({ res }: { res: Record<InferEnums<typeof elementEnums>, Infe
 function Character({ element }: { element: InferLoadFn<'apiCharacter'> }) {
   return <>
     <div class="character">
-      <Suspense fallback={<div class="shimmer"></div>}>
+      <Suspense fallback={<div class="ace-shimmer"></div>}>
         {element()?.error?.message || element()?.data?.character}
       </Suspense>
     </div>

@@ -10,7 +10,7 @@ main.fortunes {
     font-size: 2.1rem;
   }
 
-  .load-spin--two::after {
+  .ace-load--two::after {
     border-bottom: 0.3rem solid #fec701;
   }
 
