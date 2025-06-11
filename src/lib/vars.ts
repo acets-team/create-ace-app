@@ -7,7 +7,7 @@
 import { Enums } from '@ace/enums'
 
 
-export const elementEnums = new Enums('fire','water','air','earth')
+export const elementEnums = new Enums(['fire', 'water', 'air', 'earth'])
 
 
 export const characters = {
