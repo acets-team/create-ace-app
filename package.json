@@ -2,7 +2,7 @@
   "name": "create-ace-app",
   "license": "MIT",
   "type": "module",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "author": "https://github.com/acets-team",
   "homepage": "https://github.com/acets-team/create-ace-app#readme",
   "description": "👋 Create Ace App is our 1 liner to create an Ace App! & Ace provides Solid Fundamentals... For those that ❤️ fine grained reactivity AND in-editor autocomplete! 🙏",
