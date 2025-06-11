@@ -7,9 +7,9 @@ import { Suspense } from 'solid-js'
 import { Title } from '@solidjs/meta'
 import RootLayout from '../RootLayout'
 import { apiCharacter } from '@ace/apis'
+import type { InferEnums } from '@ace/enums'
 import type { InferLoadFn } from '@ace/types'
 import type { elementEnums } from '@src/lib/vars'
-import type { InferEnums } from '@ace/paramEnums'
 import { svg_npm, svg_github } from '@src/lib/svgs'
 
 

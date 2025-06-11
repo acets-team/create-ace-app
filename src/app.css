@@ -77,8 +77,11 @@ button.brand {
       color: #fec701;
     }
 
-    .ace-load {
+    .ace-load--two {
       border-top-color: #f5c518;
+      &::after {
+        border-bottom-color: white;
+      }
     }
   }
 }

@@ -51,7 +51,6 @@ class Build {
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.3',
         '@solidjs/start': '^1.1.4',
-        "@types/node": "^22.15.23",
         'solid-js': '^1.9.7',
         vinxi: '^0.5.3',
       }

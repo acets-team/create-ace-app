@@ -25,11 +25,10 @@
     "build-cli": "ace build local && tsc -p cli.tsconfig.json && (chmod +x cli.js || true)"
   },
   "devDependencies": {
-    "@acets-team/ace": "^0.0.14",
+    "@acets-team/ace": "^0.0.18",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.1.4",
-    "@types/node": "^22.15.23",
     "solid-js": "^1.9.7"
   },
   "keywords": [

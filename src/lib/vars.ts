@@ -4,10 +4,10 @@
  */
 
 
-import { ParamEnums } from '@ace/paramEnums'
+import { Enums } from '@ace/enums'
 
 
-export const elementEnums = new ParamEnums('fire','water','air','earth')
+export const elementEnums = new Enums('fire','water','air','earth')
 
 
 export const characters = {

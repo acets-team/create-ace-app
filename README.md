@@ -13,7 +13,7 @@ npx create-ace-app@latest
 ```bash
 nvm use 22
 npm create solid # basic / typescript
-npm install @acets-team/ace @types/node -D
+npm install @acets-team/ace -D
 ```
 
 
