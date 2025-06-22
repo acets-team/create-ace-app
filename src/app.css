@@ -18,21 +18,17 @@ html,
 }
 
 html {
-  font-size: 62.5%; /* https://stackoverflow.com/questions/59920538 */
+  font-size: 62.5%; /* 🚨 Don't delete: https://stackoverflow.com/questions/59920538 If you do when ya import Ace styles like load, shimmer, toast, tooltip, carousel etc they won't work */
 }
 
 body * {
   box-sizing: border-box;
 }
 
-#app {
-  margin-top: 4.5rem;
-}
-
 
 body,
 button {
-  font-size: 1.71rem;
+  font-size: 1.71rem; /* 🚨 Don't delete: https://stackoverflow.com/questions/59920538 Maybe set a different value then 1.71rem and/or add more elements that come w/ default font sizes like input, select, textarea etc */
   line-height: 1.41;
   color: var(--text-color);
 }
@@ -47,6 +43,7 @@ button.brand,
   transition: var(--speed);
   user-select: none;
   padding: 0.9rem 1.5rem;
+  cursor: pointer;
 }
 
 a.brand,
@@ -86,23 +83,30 @@ button.brand {
   }
 }
 
-.title  {
-  font-size: 3.3rem;
-  margin-bottom: 2.1rem;
-  text-align: center;
-}
+main {
+  width: 100%;
+  max-width: 60rem;
+  margin: 3rem auto 0 auto;
+  position: relative;
 
-ol {
-  list-style-position: inside;
-  text-align: center;
-  padding-left: 0;
-}
+  .page-title  {
+    font-size: 3.3rem;
+    margin-bottom: 2.1rem;
+    text-align: center;
+  }
 
-.welcome-emoji {
-  position: absolute;
-  padding: 0.9rem;
-  top: -3rem;
-  left: 50%;
-  margin-left: -1.5rem;
-  width: 3rem;
+  ol {
+    list-style-position: inside;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .emoji {
+    position: absolute;
+    padding: 0.9rem;
+    top: -3rem;
+    left: 50%;
+    margin-left: -1.5rem;
+    width: 3rem;
+  }
 }

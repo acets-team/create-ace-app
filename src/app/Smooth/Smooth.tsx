@@ -1,16 +1,18 @@
 import './Smooth.css'
 import { A } from '@ace/a'
-import '@ace/shimmer.styles.css'
 import { load } from '@ace/load'
 import { Route } from '@ace/route'
-import { Suspense } from 'solid-js'
 import { Title } from '@solidjs/meta'
-import RootLayout from '../RootLayout'
+import { fortunes } from '@src/lib/vars'
 import { apiCharacter } from '@ace/apis'
+import RootLayout from '@src/app/RootLayout'
 import type { InferEnums } from '@ace/enums'
 import type { InferLoadFn } from '@ace/types'
+import { Suspense, type JSX } from 'solid-js'
 import type { elementEnums } from '@src/lib/vars'
+import { randomBetween } from '@ace/randomBetween'
 import { svg_npm, svg_github } from '@src/lib/svgs'
+import { showToast, toastStyleDark, toastStyleLight, type ShowToastProps } from '@ace/toast'
 
 
 export default new Route('/smooth')
@@ -25,7 +27,7 @@ export default new Route('/smooth')
       <Title>😎 Smooth</Title>
 
       <main class="smooth">
-        <div class="welcome-emoji">🌟</div>
+        <div class="emoji">💫</div>
         <Notice />
         <Characters res={{ air, fire, earth, water }} />
         <div class="hr"></div>
@@ -37,7 +39,7 @@ export default new Route('/smooth')
 
 function Notice() {
   return <>
-    <div class="title">Smooth 😎</div>
+    <div class="page-title">Smooth 😎</div>
 
     <ol>
       <li>Did ya notice on page load... 🧐</li>
@@ -64,7 +66,7 @@ function Character({ element }: { element: InferLoadFn<'apiCharacter'> }) {
   return <>
     <div class="character">
       <Suspense fallback={<div class="ace-shimmer"></div>}>
-        {element()?.error?.message || element()?.data?.character}
+        {element()?.error?.message || element()?.data}
       </Suspense>
     </div>
   </>
@@ -72,6 +74,19 @@ function Character({ element }: { element: InferLoadFn<'apiCharacter'> }) {
 
 
 function Links() {
+  const types: ShowToastProps['type'][] = ['info', 'success']
+  const styles: JSX.CSSProperties[] = [toastStyleDark, toastStyleLight]
+
+  function getToastProps(): ShowToastProps {
+    return {
+      type: types[randomBetween(0, types.length - 1)],
+      value: fortunes[randomBetween(0, fortunes.length - 1)],
+      toastProps: {
+        style: styles[randomBetween(0, types.length - 1)]
+      }
+    }
+  }
+
   return <>
     <div class="links">
       <a href="https://github.com/orgs/acets-team/repositories" target="_blank" class="brand">
@@ -83,6 +98,8 @@ function Links() {
         {svg_npm()}
         <span>NPM</span>
       </a>
+
+      <button onClick={() => showToast(getToastProps())} class="brand">📣 Show Toast Notifications</button>
 
       <A path="/" activeClass="active" end={true} class="brand">
         <span>🏡</span>

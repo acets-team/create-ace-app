@@ -3,19 +3,18 @@ import '@ace/load.styles.css'
 import { Route } from '@ace/route'
 import { Title } from '@solidjs/meta'
 import { apiFortune } from '@ace/apis'
-import RootLayout from '../../RootLayout'
-import WelcomeLayout from '../WelcomeLayout'
-import { createSignal, For, Show } from 'solid-js'
+import RootLayout from '@src/app/RootLayout'
 import { randomBetween } from '@ace/randomBetween'
+import { createSignal, For, Show } from 'solid-js'
 import { fortunes as allFortunes } from '@src/lib/vars'
 import { AnimatedFor, ForAnimator } from '@ace/animatedFor'
 
 
 export default new Route('/fortunes')
-  .layouts([RootLayout, WelcomeLayout])
+  .layouts([RootLayout])
   .component((fe) => {  
     const forAnimator = new ForAnimator()
-    const [fortunes, setFortunes] = createSignal<{fortune: string}[]>([])
+    const [fortunes, setFortunes] = createSignal<string[]>([])
 
     async function onClick() {
       forAnimator.preFetch()
@@ -36,7 +35,8 @@ export default new Route('/fortunes')
       <Title>🧚‍♀️ Fortunes</Title>
 
       <main class="fortunes">
-        <div class="title">Fortunes 🧚‍♀️</div>
+        <div class="emoji">✨</div>
+        <div class="page-title">Fortunes 🧚‍♀️</div>
 
         <button onClick={onClick} disabled={fe.bits.isOn('fortune')} class="brand gold">
           <Show when={fe.bits.isOn('fortune')} fallback="Click for Fortunes!">
@@ -46,7 +46,7 @@ export default new Route('/fortunes')
 
         <AnimatedFor forAnimator={forAnimator} items={
           <For each={fortunes()}>
-            {({fortune}) => <div class="fortune">{fortune}</div>}
+            {(fortune) => <div class="fortune">{fortune}</div>}
           </For>
         } />
       </main>

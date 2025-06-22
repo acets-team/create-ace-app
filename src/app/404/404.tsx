@@ -1,8 +1,8 @@
 import './404.css'
 import { A } from '@ace/a'
 import { Title } from '@solidjs/meta'
-import RootLayout from '../RootLayout'
 import { Route404 } from '@ace/route404'
+import RootLayout from '@src/app/RootLayout'
 
 
 export default new Route404()

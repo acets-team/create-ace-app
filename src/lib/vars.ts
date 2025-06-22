@@ -1,6 +1,6 @@
 /** 
  * - Common vars file, that WILL be injected into the `fe` AND `be` build
- * - 🚨 Please do not put secret information into this file, use the `.env` file for that please
+ * - 🚨 Do not put secret information into this file, use the `.env` file for that please
  */
 
 

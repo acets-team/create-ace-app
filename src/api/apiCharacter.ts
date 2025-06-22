@@ -1,5 +1,3 @@
-'use server'
-
 import { API } from '@ace/api'
 import { holdUp } from '@ace/holdUp'
 import type { InferEnums } from '@ace/enums'
@@ -18,5 +16,5 @@ export const GET = new API('/api/character/:element', 'apiCharacter')
 
     const character = characters[element][randomBetween(0, characters[element].length - 1)]
 
-    return be.json({ character })
+    return be.success(character)
   })

@@ -2,6 +2,7 @@
 
 import readline from 'node:readline'
 import { fileURLToPath } from 'node:url'
+import { randomBytes } from 'node:crypto'
 import { join, dirname } from 'node:path'
 import { cp, mkdir } from 'node:fs/promises'
 import { constants, type PathLike } from 'node:fs'
@@ -83,13 +84,21 @@ class Build {
     writePromises.push(
       cp(join(__dirname, 'src'), join(newProjectDir, 'src'), { recursive: true }),
       cp(join(__dirname, 'public'), join(newProjectDir, 'public'), { recursive: true }),
-      writeFile(join(newProjectDir, '.env'), `ENV=local\nSESSION_CRYPT_PASSWORD=${ crypto.randomUUID() }`, 'utf8'),
+      writeFile(join(newProjectDir, '.env'), this.renderDotEnv(), 'utf8'),
       writeFile(join(newProjectDir, 'package.json'), JSON.stringify(this.renderPackageDotJson(), null, 2), 'utf8'),
       writeFile(join(newProjectDir, '.gitignore'), this.renderGitIgnore(), 'utf8'),
       writeFile(join(newProjectDir, 'wrangler.toml'), this.renderWranglerDotToml(), 'utf8'),
     )
 
     await Promise.all(writePromises)
+  }
+
+
+  renderDotEnv() {
+    return `ENV=local
+JWT_SECRET=${ randomBytes(64).toString('base64') }
+SESSION_SECRET=${ randomBytes(64).toString('base64') }
+`
   }
 
 
