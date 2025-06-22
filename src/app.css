@@ -74,11 +74,9 @@ button.brand {
       color: #fec701;
     }
 
-    .ace-load--two {
-      border-top-color: #f5c518;
-      &::after {
-        border-bottom-color: white;
-      }
+    .ace-loading--two {
+      --ace-loading-color: gold;
+      --ace-loading-two-color: white;
     }
   }
 }

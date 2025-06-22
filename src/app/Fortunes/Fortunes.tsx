@@ -1,8 +1,8 @@
 import './Fortunes.css'
-import '@ace/load.styles.css'
 import { Route } from '@ace/route'
 import { Title } from '@solidjs/meta'
 import { apiFortune } from '@ace/apis'
+import { Loading } from '@ace/loading'
 import RootLayout from '@src/app/RootLayout'
 import { randomBetween } from '@ace/randomBetween'
 import { createSignal, For, Show } from 'solid-js'
@@ -38,9 +38,9 @@ export default new Route('/fortunes')
         <div class="emoji">✨</div>
         <div class="page-title">Fortunes 🧚‍♀️</div>
 
-        <button onClick={onClick} disabled={fe.bits.isOn('fortune')} class="brand gold">
+        <button onClick={onClick} disabled={fe.bits.isOn('fortune')} class="brand gold" type="button">
           <Show when={fe.bits.isOn('fortune')} fallback="Click for Fortunes!">
-            <span class="ace-load--two"></span>
+            <Loading type="two" />
           </Show>
         </button>
 
