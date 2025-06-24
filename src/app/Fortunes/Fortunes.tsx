@@ -14,7 +14,7 @@ export default new Route('/fortunes')
   .layouts([RootLayout])
   .component((fe) => {  
     const forAnimator = new ForAnimator()
-    const [fortunes, setFortunes] = createSignal<string[]>([])
+    const [fortunes, setFortunes] = createSignal<{fortune: string}[]>([])
 
     async function onClick() {
       forAnimator.preFetch()
@@ -46,7 +46,7 @@ export default new Route('/fortunes')
 
         <AnimatedFor forAnimator={forAnimator} items={
           <For each={fortunes()}>
-            {(fortune) => <div class="fortune">{fortune}</div>}
+            {({fortune}) => <div class="fortune">{fortune}</div>}
           </For>
         } />
       </main>
