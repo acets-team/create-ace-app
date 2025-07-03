@@ -15,5 +15,5 @@ export const GET = new API('/api/fortune/:id', 'apiFortune')
 
     await holdUp()
 
-    return be.success({ fortune: fortunes[id] })
+    return be.success({ id, fortune: fortunes[id] })
   })

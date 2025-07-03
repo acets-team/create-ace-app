@@ -1,11 +1,14 @@
 import './Fortunes.css'
 import { Route } from '@ace/route'
+import { For, Show } from 'solid-js'
 import { Title } from '@solidjs/meta'
 import { apiFortune } from '@ace/apis'
 import { Loading } from '@ace/loading'
+import { showToast } from '@ace/toast'
+import { createKey } from '@ace/createKey'
 import RootLayout from '@src/app/RootLayout'
+import { APIName2ResponseData } from '@ace/types'
 import { randomBetween } from '@ace/randomBetween'
-import { createSignal, For, Show } from 'solid-js'
 import { fortunes as allFortunes } from '@src/lib/vars'
 import { AnimatedFor, ForAnimator } from '@ace/animatedFor'
 
@@ -14,7 +17,7 @@ export default new Route('/fortunes')
   .layouts([RootLayout])
   .component((fe) => {  
     const forAnimator = new ForAnimator()
-    const [fortunes, setFortunes] = createSignal<{fortune: string}[]>([])
+    const [fortunes, setFortunes] = createKey<APIName2ResponseData<'apiFortune'>[]>([])
 
     async function onClick() {
       forAnimator.preFetch()
@@ -23,10 +26,10 @@ export default new Route('/fortunes')
 
       const res = await apiFortune({params, bitKey: 'fortune'})
 
-      if (res.error) alert(res.error.message)
+      if (res.error?.message) showToast({ type: 'danger', value: res.error.message })
 
       if (res.data) {
-        setFortunes([ res.data, ...fortunes() ]) // bind to beginning
+        setFortunes([ res.data, ...fortunes ]) // bind to beginning
         forAnimator.postSet()
       }
     }
@@ -44,11 +47,11 @@ export default new Route('/fortunes')
           </Show>
         </button>
 
-        <AnimatedFor forAnimator={forAnimator} items={
-          <For each={fortunes()}>
+        <AnimatedFor forAnimator={forAnimator} divProps={{class: 'items'}}>
+          <For each={fortunes}>
             {({fortune}) => <div class="fortune">{fortune}</div>}
           </For>
-        } />
+        </AnimatedFor>
       </main>
     </>
   })

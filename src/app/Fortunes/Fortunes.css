@@ -10,7 +10,7 @@ main.fortunes {
     font-size: 2.1rem;
   }
 
-  .animated-for {
+  .items {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;

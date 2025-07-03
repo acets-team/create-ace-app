@@ -7,11 +7,11 @@ import { fortunes } from '@src/lib/vars'
 import { apiCharacter } from '@ace/apis'
 import RootLayout from '@src/app/RootLayout'
 import type { InferEnums } from '@ace/enums'
-import type { InferLoadFn } from '@ace/types'
 import { Suspense, type JSX } from 'solid-js'
 import type { elementEnums } from '@src/lib/vars'
 import { randomBetween } from '@ace/randomBetween'
 import { svg_npm, svg_github } from '@src/lib/svgs'
+import type { APIName2LoadResponse } from '@ace/types'
 import { showToast, toastStyleDark, toastStyleLight, type ShowToastProps } from '@ace/toast'
 
 
@@ -50,7 +50,7 @@ function Notice() {
 }
 
 
-function Characters({ res }: { res: Record<InferEnums<typeof elementEnums>, InferLoadFn<'apiCharacter'>> }) {
+function Characters({ res }: { res: Record<InferEnums<typeof elementEnums>, APIName2LoadResponse<'apiCharacter'>> }) {
   return <>
     <div class="characters">
       <Character element={res.fire} />
@@ -62,7 +62,7 @@ function Characters({ res }: { res: Record<InferEnums<typeof elementEnums>, Infe
 }
 
 
-function Character({ element }: { element: InferLoadFn<'apiCharacter'> }) {
+function Character({ element }: { element: APIName2LoadResponse<'apiCharacter'> }) {
   return <>
     <div class="character">
       <Suspense fallback={<div class="ace-shimmer"></div>}>

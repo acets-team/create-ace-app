@@ -44,16 +44,17 @@ class Build {
       },
       scripts: {
         dev: 'ace build local && vinxi dev',
-        build: 'vinxi build',
-        start: 'vinxi start',
+        build: 'ace build prod && vinxi build',
       },
       devDependencies: {
-        '@acets-team/ace': '^0.0.32',
+        '@acets-team/ace': '^0.0.33',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.3',
-        '@solidjs/start': '^1.1.4',
+        '@solidjs/start': '^1.1.5',
+        '@types/node': '^24.0.8',
+        typescript: '^5.8.3',
         'solid-js': '^1.9.7',
-        vinxi: '^0.5.3',
+        vinxi: '^0.5.8'
       }
     }
   }
