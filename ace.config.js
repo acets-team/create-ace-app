@@ -8,6 +8,7 @@ export const config = {
   logCaughtErrors: true,
   plugins: {
     solid: true,
+    valibot: true,
   }
 }
 

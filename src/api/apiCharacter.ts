@@ -1,20 +1,19 @@
 import { API } from '@ace/api'
 import { holdUp } from '@ace/holdUp'
-import type { InferEnums } from '@ace/enums'
+import { object, picklist } from 'valibot'
 import { randomBetween } from '@ace/randomBetween'
-import { characters, elementEnums } from '@src/lib/vars'
+import { valibotParams } from '@ace/valibotParams'
+import { characters, elements } from '@src/lib/vars'
 
 
 export const GET = new API('/api/character/:element', 'apiCharacter')
-  .params<{ element: InferEnums<typeof elementEnums> }>()
+  .pathParams(valibotParams(object({ element: picklist(elements) })))
   .resolve(async (be) => {
-    const {element} = be.getParams()
-
-    if (!elementEnums.has(element)) throw new Error(`❌ Please send a valid element, "${element}" is not a valid element, the valid elements are: ${elementEnums}`)
-
     await holdUp()
 
-    const character = characters[element][randomBetween(0, characters[element].length - 1)]
+    const maxIndex = characters[be.pathParams.element].length - 1
+    const randomIndex = randomBetween(0, maxIndex)
+    const character = characters[be.pathParams.element][randomIndex]
 
     return be.success(character)
   })

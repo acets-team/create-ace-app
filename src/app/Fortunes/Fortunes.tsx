@@ -11,10 +11,13 @@ import { APIName2ResponseData } from '@ace/types'
 import { randomBetween } from '@ace/randomBetween'
 import { fortunes as allFortunes } from '@src/lib/vars'
 import { AnimatedFor, ForAnimator } from '@ace/animatedFor'
+import { valibotParams } from '@ace/valibotParams'
+import { object, optional, string } from 'valibot'
 
 
 export default new Route('/fortunes')
   .layouts([RootLayout])
+  .searchParams(valibotParams(object({query: string()})))
   .component((fe) => {  
     const forAnimator = new ForAnimator()
     const [fortunes, setFortunes] = createKey<APIName2ResponseData<'apiFortune'>[]>([])
@@ -22,9 +25,9 @@ export default new Route('/fortunes')
     async function onClick() {
       forAnimator.preFetch()
 
-      const params = { id: randomBetween(0, allFortunes.length - 1) } 
+      const pathParams = { id: randomBetween(0, allFortunes.length - 1) } 
 
-      const res = await apiFortune({params, bitKey: 'fortune'})
+      const res = await apiFortune({pathParams, bitKey: 'fortune'})
 
       if (res.error?.message) showToast({ type: 'danger', value: res.error.message })
 

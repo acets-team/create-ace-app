@@ -4,10 +4,9 @@
  */
 
 
-import { Enums } from '@ace/enums'
+export const elements = ['fire', 'water', 'air', 'earth'] as const
 
-
-export const elementEnums = new Enums(['fire', 'water', 'air', 'earth'])
+export type Element = (typeof elements)[number]
 
 
 export const characters = {

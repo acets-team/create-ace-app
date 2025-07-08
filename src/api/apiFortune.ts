@@ -1,19 +1,14 @@
 import { API } from '@ace/api'
+import { object } from 'valibot'
 import { holdUp } from '@ace/holdUp'
 import { fortunes } from '@src/lib/vars'
-import { parseNumber } from '@ace/parseNumber'
+import { valibotParams } from '@ace/valibotParams'
+import { valibotString2Int } from '@ace/valibotString2Int'
 
 
 export const GET = new API('/api/fortune/:id', 'apiFortune')
-  .params<{ id: number }>()
+  .pathParams(valibotParams(object({ id: valibotString2Int() })))
   .resolve(async (be) => {
-    const params = be.getParams()
-
-    const maxId = fortunes.length - 1
-
-    const id = parseNumber({ potential: params.id, min: 0, max: maxId, error: `❌ Please send a valid id, "${params.id}" is not a number between 0 and ${maxId}` })
-
     await holdUp()
-
-    return be.success({ id, fortune: fortunes[id] })
+    return be.success({ id: be.pathParams.id, fortune: fortunes[be.pathParams.id] })
   })

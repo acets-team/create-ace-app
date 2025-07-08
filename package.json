@@ -5,7 +5,7 @@
   "version": "0.0.24",
   "author": "https://github.com/acets-team",
   "homepage": "https://github.com/acets-team/create-ace-app#readme",
-  "description": "👋 Create Ace App is our 1 liner to create an Ace App! & Ace provides Solid Fundamentals... For those that ❤️ fine grained reactivity AND in-editor autocomplete! 🙏",
+  "description": "👋 Ace is the typesafetiest framework! & npx create-ace-app@latest is a wizard to help us get started developing w/ Ace!",
   "bin": {
     "create-ace-app": "./cli.js"
   },
@@ -32,13 +32,14 @@
     "wizard"
   ],
   "devDependencies": {
-    "@acets-team/ace": "^0.0.33",
+    "@acets-team/ace": "^0.0.34",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.1.5",
     "@types/node": "^24.0.8",
     "solid-js": "^1.9.7",
     "typescript": "^5.8.3",
+    "valibot": "^1.1.0",
     "vinxi": "^0.5.8"
   }
 }
