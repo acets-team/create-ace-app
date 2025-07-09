@@ -47,13 +47,14 @@ class Build {
         build: 'ace build prod && vinxi build',
       },
       devDependencies: {
-        '@acets-team/ace': '^0.0.35',
+        '@acets-team/ace': '^0.0.36',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.3',
         '@solidjs/start': '^1.1.5',
         '@types/node': '^24.0.8',
         typescript: '^5.8.3',
         'solid-js': '^1.9.7',
+        valibot: '^1.1.0',
         vinxi: '^0.5.8'
       }
     }

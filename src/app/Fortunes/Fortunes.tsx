@@ -5,22 +5,19 @@ import { Title } from '@solidjs/meta'
 import { apiFortune } from '@ace/apis'
 import { Loading } from '@ace/loading'
 import { showToast } from '@ace/toast'
+import { APIName2Data } from '@ace/types'
 import { createKey } from '@ace/createKey'
 import RootLayout from '@src/app/RootLayout'
-import { APIName2ResponseData } from '@ace/types'
 import { randomBetween } from '@ace/randomBetween'
 import { fortunes as allFortunes } from '@src/lib/vars'
 import { AnimatedFor, ForAnimator } from '@ace/animatedFor'
-import { valibotParams } from '@ace/valibotParams'
-import { object, optional, string } from 'valibot'
 
 
 export default new Route('/fortunes')
   .layouts([RootLayout])
-  .searchParams(valibotParams(object({query: string()})))
   .component((fe) => {  
     const forAnimator = new ForAnimator()
-    const [fortunes, setFortunes] = createKey<APIName2ResponseData<'apiFortune'>[]>([])
+    const [fortunes, setFortunes] = createKey<APIName2Data<'apiFortune'>>([])
 
     async function onClick() {
       forAnimator.preFetch()

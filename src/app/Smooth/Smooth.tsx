@@ -104,8 +104,8 @@ function Links() {
         <span>🏡</span>
         <span>Home</span>
       </A>
-{/* searchParams required */}
-      <A path="/fortunes" searchParams={{}} solidAProps={{ class: 'brand' }}>
+
+      <A path="/fortunes" solidAProps={{ class: 'brand' }}>
         <span>🧚‍♀️</span>
         <span>Fortunes</span>
       </A>
