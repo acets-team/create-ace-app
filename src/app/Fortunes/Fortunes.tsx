@@ -17,7 +17,7 @@ export default new Route('/fortunes')
   .layouts([RootLayout])
   .component((fe) => {  
     const forAnimator = new ForAnimator()
-    const [fortunes, setFortunes] = createKey<APIName2Data<'apiFortune'>>([])
+    const [fortunes, setFortunes] = createKey<APIName2Data<'apiFortune'>[]>()
 
     async function onClick() {
       forAnimator.preFetch()
@@ -48,9 +48,9 @@ export default new Route('/fortunes')
         </button>
 
         <AnimatedFor forAnimator={forAnimator} divProps={{class: 'items'}}>
-          <For each={fortunes}>
-            {({fortune}) => <div class="fortune">{fortune}</div>}
-          </For>
+          <For each={fortunes}>{
+            (item) => <div class="fortune">{item.fortune}</div>
+          }</For>
         </AnimatedFor>
       </main>
     </>

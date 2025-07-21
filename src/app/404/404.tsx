@@ -7,15 +7,15 @@ import RootLayout from '@src/app/RootLayout'
 
 export default new Route404()
   .layouts([RootLayout])
-  .component((fe) => {
+  .component(({location}) => {
     return <>
       <Title>😅 404</Title>
 
       <main class="not-found">
         <div class="code">404 😅</div>
         <div class="message">We don't have a page called:</div>
-        <div class="path">{fe.getLocation().pathname}</div>
-        <A path="/" class="brand">🏡 Go Back Home</A>
+        <div class="path">{location.pathname}</div>
+        <A path="/" solidAProps={{class: 'brand'}}>🏡 Go Back Home</A>
       </main>
     </>
   })

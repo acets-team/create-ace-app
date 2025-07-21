@@ -3,9 +3,9 @@ import { Layout } from '@ace/layout'
 
 
 export default new Layout()
-  .component((fe) => {
+  .component(({children}) => {
     return <>
       <Nav />
-      {fe.getChildren()}
+      {children}
     </>
   })
