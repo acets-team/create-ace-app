@@ -9,6 +9,11 @@ main.smooth {
     flex-direction: column;
     gap: 0.9rem;
     margin: var(--space) 0;
+
+    a,
+    button {
+      height: 4.8rem;
+    }
   
     a {
       display: flex;

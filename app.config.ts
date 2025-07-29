@@ -5,10 +5,10 @@ import { defineConfig } from '@solidjs/start/config'
 
 export default defineConfig({
   middleware: './src/lib/middleware.ts',
-  vite({ router }) {
+  vite() {
     return {
       resolve: {
-        alias: resolveAlias(router, import.meta.url)
+        alias: resolveAlias(import.meta.url)
       }
     }
   }

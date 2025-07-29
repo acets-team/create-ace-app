@@ -1,4 +1,4 @@
-import { Nav } from '@src/Nav/Nav'
+import { Nav } from '../Nav/Nav'
 import { Layout } from '@ace/layout'
 
 

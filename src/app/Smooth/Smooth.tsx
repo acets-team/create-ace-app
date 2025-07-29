@@ -2,21 +2,24 @@ import './Smooth.css'
 import { A } from '@ace/a'
 import { load } from '@ace/load'
 import { Route } from '@ace/route'
+import { reload } from '@ace/reload'
 import { Title } from '@solidjs/meta'
+import { Loading } from '@ace/loading'
 import { fortunes } from '@src/lib/vars'
 import { apiCharacter } from '@ace/apis'
-import type { Element } from '@src/lib/vars'
 import RootLayout from '@src/app/RootLayout'
-import { Suspense, type JSX } from 'solid-js'
-import { randomBetween } from '@ace/randomBetween'
+import type { Element } from '@src/lib/types'
+import { Show, Suspense, type JSX } from 'solid-js'
 import { svg_npm, svg_github } from '@src/lib/svgs'
 import type { APIName2LoadResponse } from '@ace/types'
+import { randomArrayItem } from '@ace/randomArrayItem'
+import type { ScopeComponent } from '@ace/scopeComponent'
 import { showToast, toastStyleDark, toastStyleLight, type ShowToastProps } from '@ace/toast'
 
 
 export default new Route('/smooth')
   .layouts([RootLayout])
-  .component(() => {
+  .component((scope) => {
     const air = load(() => apiCharacter({pathParams: {element: 'air'}}), 'air')
     const fire = load(() => apiCharacter({pathParams: {element: 'fire'}}), 'fire')
     const earth = load(() => apiCharacter({pathParams: {element: 'earth'}}), 'earth')
@@ -30,7 +33,7 @@ export default new Route('/smooth')
         <Notice />
         <Characters res={{ air, fire, earth, water }} />
         <div class="hr"></div>
-        <Links />
+        <Links scope={scope}/>
       </main>
     </>
   })
@@ -72,22 +75,30 @@ function Character({ element }: { element: APIName2LoadResponse<'apiCharacter'> 
 }
 
 
-function Links() {
+function Links({scope}: {scope: ScopeComponent}) {
   const types: ShowToastProps['type'][] = ['info', 'success']
   const styles: JSX.CSSProperties[] = [toastStyleDark, toastStyleLight]
 
   function getToastProps(): ShowToastProps {
     return {
-      type: types[randomBetween(0, types.length - 1)],
-      value: fortunes[randomBetween(0, fortunes.length - 1)],
+      type: randomArrayItem(types),
+      value: randomArrayItem(fortunes),
       toastProps: {
-        style: styles[randomBetween(0, styles.length - 1)]
+        style: randomArrayItem(styles),
       }
     }
   }
 
   return <>
     <div class="links">
+      <button onClick={() => reload('reload', ['air', 'fire', 'water', 'earth'])} disabled={scope.bits.isOn('reload')} class="brand" type="button">
+        <Show when={scope.bits.isOn('reload')} fallback="🔁 Reload">
+          <Loading type="two" color="white" twoColor="var(--link-color)" />
+        </Show>
+      </button>
+
+      <button onClick={() => showToast(getToastProps())} class="brand">📣 Show Toast Notifications</button>
+
       <a href="https://github.com/orgs/acets-team/repositories" target="_blank" class="brand">
         {svg_github()}
         <span>GitHub</span>
@@ -98,7 +109,6 @@ function Links() {
         <span>NPM</span>
       </a>
 
-      <button onClick={() => showToast(getToastProps())} class="brand">📣 Show Toast Notifications</button>
 
       <A path="/" solidAProps={{ class: 'brand', end: true }}>
         <span>🏡</span>

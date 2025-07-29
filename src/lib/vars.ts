@@ -6,8 +6,6 @@
 
 export const elements = ['fire', 'water', 'air', 'earth'] as const
 
-export type Element = (typeof elements)[number]
-
 
 export const characters = {
   air: [ 'Tenzin', 'Pema', 'Appa', 'Opal', 'Kai', 'Jinora' ],
