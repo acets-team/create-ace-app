@@ -20,10 +20,10 @@ import { showToast, toastStyleDark, toastStyleLight, type ShowToastProps } from 
 export default new Route('/smooth')
   .layouts([RootLayout])
   .component((scope) => {
-    const air = load(() => apiCharacter({pathParams: {element: 'air'}}), 'air')
-    const fire = load(() => apiCharacter({pathParams: {element: 'fire'}}), 'fire')
-    const earth = load(() => apiCharacter({pathParams: {element: 'earth'}}), 'earth')
-    const water = load(() => apiCharacter({pathParams: {element: 'water'}}), 'water')
+    const air = load(() => apiCharacter({pathParams: {element: 'air'}}), '💨')
+    const fire = load(() => apiCharacter({pathParams: {element: 'fire'}}), '🔥')
+    const earth = load(() => apiCharacter({pathParams: {element: 'earth'}}), '🌎')
+    const water = load(() => apiCharacter({pathParams: {element: 'water'}}), '💦')
 
     return <>
       <Title>😎 Smooth</Title>
@@ -76,23 +76,10 @@ function Character({ element }: { element: APIName2LoadResponse<'apiCharacter'> 
 
 
 function Links({scope}: {scope: ScopeComponent}) {
-  const types: ShowToastProps['type'][] = ['info', 'success']
-  const styles: JSX.CSSProperties[] = [toastStyleDark, toastStyleLight]
-
-  function getToastProps(): ShowToastProps {
-    return {
-      type: randomArrayItem(types),
-      value: randomArrayItem(fortunes),
-      toastProps: {
-        style: randomArrayItem(styles),
-      }
-    }
-  }
-
   return <>
     <div class="links">
-      <button onClick={() => reload('reload', ['air', 'fire', 'water', 'earth'])} disabled={scope.bits.isOn('reload')} class="brand" type="button">
-        <Show when={scope.bits.isOn('reload')} fallback="🔁 Reload">
+      <button onClick={() => reload('🔁', ['💨', '🔥', '🌎', '💦'])} disabled={scope.bits.isOn('🔁')} class="brand" type="button">
+        <Show when={scope.bits.isOn('🔁')} fallback="🔁 Reload">
           <Loading type="two" color="white" twoColor="var(--link-color)" />
         </Show>
       </button>
@@ -127,3 +114,18 @@ function Links({scope}: {scope: ScopeComponent}) {
     </div>
   </>
 }
+
+
+function getToastProps(): ShowToastProps {
+  return {
+    type: randomArrayItem(types),
+    value: randomArrayItem(fortunes),
+    toastProps: {
+      style: randomArrayItem(styles),
+    }
+  }
+}
+
+const types: ShowToastProps['type'][] = ['info', 'success']
+
+const styles: JSX.CSSProperties[] = [toastStyleDark, toastStyleLight]
