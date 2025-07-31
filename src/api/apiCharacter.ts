@@ -1,13 +1,13 @@
 import { API } from '@ace/api'
 import { holdUp } from '@ace/holdUp'
-import { vParser } from '@ace/vParser'
+import { vParse } from '@ace/vParse'
 import { object, picklist } from 'valibot'
 import { randomBetween } from '@ace/randomBetween'
 import { characters, elements } from '@src/lib/vars'
 
 
 export const GET = new API('/api/character/:element', 'apiCharacter')
-  .pathParams(vParser(object({ element: picklist(elements) })))
+  .pathParams(vParse(object({ element: picklist(elements) })))
   .resolve(async (be) => {
     await holdUp()
 
