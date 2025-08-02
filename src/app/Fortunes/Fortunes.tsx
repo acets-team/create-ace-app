@@ -15,7 +15,7 @@ import { AnimatedFor, ForAnimator } from '@ace/animatedFor'
 
 export default new Route('/fortunes')
   .layouts([RootLayout])
-  .component((fe) => {  
+  .component((scope) => {  
     const forAnimator = new ForAnimator()
     const [fortunes, setFortunes] = createKey<APIName2Data<'apiFortune'>[]>()
 
@@ -41,8 +41,8 @@ export default new Route('/fortunes')
         <div class="emoji">✨</div>
         <div class="page-title">Fortunes 🧚‍♀️</div>
 
-        <button onClick={onClick} disabled={fe.bits.isOn('fortune')} class="brand gold" type="button">
-          <Show when={fe.bits.isOn('fortune')} fallback="Click for Fortunes!">
+        <button onClick={onClick} disabled={scope.bits.isOn('fortune')} class="brand gold" type="button">
+          <Show when={scope.bits.isOn('fortune')} fallback="Click for Fortunes!">
             <Loading type="two" />
           </Show>
         </button>

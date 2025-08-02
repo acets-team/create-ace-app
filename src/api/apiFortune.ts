@@ -8,7 +8,7 @@ import { fortunes } from '@src/lib/vars'
 
 export const GET = new API('/api/fortune/:id', 'apiFortune')
   .pathParams(vParse(object({ id: vNum() })))
-  .resolve(async (be) => {
+  .resolve(async (scope) => {
     await holdUp()
-    return be.success({ id: be.pathParams.id, fortune: fortunes[be.pathParams.id] })
+    return scope.success({ id: scope.pathParams.id, fortune: fortunes[scope.pathParams.id] })
   })

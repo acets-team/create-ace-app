@@ -45,6 +45,7 @@ class Build {
       scripts: {
         dev: 'ace build local && vinxi dev',
         build: 'ace build prod && vinxi build',
+        typesafe: 'tsc --project tsconfig.typesafe.json',
       },
       devDependencies: {
         '@acets-team/ace': '^0.0.45',
@@ -53,8 +54,9 @@ class Build {
         '@solidjs/start': '^1.1.7',
         '@types/node': '^24.1.0',
         'solid-js': '^1.9.7',
+        typescript: "^5.8.3",
         valibot: '^1.1.0',
-        vinxi: '^0.5.8'
+        vinxi: '^0.5.8',
       }
     }
   }
@@ -89,6 +91,7 @@ class Build {
       writeFile(join(newProjectDir, 'package.json'), JSON.stringify(this.renderPackageDotJson(), null, 2), 'utf8'),
       writeFile(join(newProjectDir, '.gitignore'), this.renderGitIgnore(), 'utf8'),
       writeFile(join(newProjectDir, 'wrangler.toml'), this.renderWranglerDotToml(), 'utf8'),
+      writeFile(join(newProjectDir, 'tsconfig.typesafe.json'), this.renderTsconfigTypesafe(), 'utf8'),
     )
 
     await Promise.all(writePromises)
@@ -99,6 +102,20 @@ class Build {
     return `ENV=local
 JWT_SECRET=${ randomBytes(64).toString('base64') }
 SESSION_SECRET=${ randomBytes(64).toString('base64') }
+`
+  }
+
+
+  renderTsconfigTypesafe() {
+    return `{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": ["src", ".ace"],
+  "exclude": ["node_modules", "dist", "build"]
+}
 `
   }
 

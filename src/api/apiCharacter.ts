@@ -8,12 +8,12 @@ import { characters, elements } from '@src/lib/vars'
 
 export const GET = new API('/api/character/:element', 'apiCharacter')
   .pathParams(vParse(object({ element: picklist(elements) })))
-  .resolve(async (be) => {
+  .resolve(async (scope) => {
     await holdUp()
 
-    const maxIndex = characters[be.pathParams.element].length - 1
+    const maxIndex = characters[scope.pathParams.element].length - 1
     const randomIndex = randomBetween(0, maxIndex)
-    const character = characters[be.pathParams.element][randomIndex]
+    const character = characters[scope.pathParams.element][randomIndex]
 
-    return be.success(character)
+    return scope.success(character)
   })
