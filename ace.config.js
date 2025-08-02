@@ -11,18 +11,3 @@ export const config = {
     valibot: true,
   }
 }
-
-
-/** 
- * @typedef {Object} JWTPayload
- * @property {number} sessionId
- */
-
-
-/** 
- * @typedef {Object} JWTResponse
- * @property {number} sessionId
- * @property {number} userId
- * @property {boolean} isAdmin
- * @property {string} name
- */

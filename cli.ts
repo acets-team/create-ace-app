@@ -35,7 +35,7 @@ class Build {
   template = ''
   projectName = ''
 
-  renderPackageDotJson() {
+  #renderPackageDotJson() {
     return {
       name: this.projectName,
       type: 'module',
@@ -48,7 +48,7 @@ class Build {
         typesafe: 'tsc --project tsconfig.typesafe.json',
       },
       devDependencies: {
-        '@acets-team/ace': '^0.0.45',
+        '@acets-team/ace': '^0.0.46',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.3',
         '@solidjs/start': '^1.1.7',
@@ -78,8 +78,8 @@ class Build {
       mkdir(join(newProjectDir, 'public'), { recursive: true }),
     ])
 
-    // write files that go right into root folder
-    const writePromises = [ 'app.config.ts', 'ace.config.js', 'tsconfig.json' ].map(file =>
+    // read + write files that go right into root folder
+    const writePromises = [ 'app.config.ts', 'ace.config.js', 'tsconfig.json', 'tsconfig.typesafe.json' ].map(file =>
       cp(join(__dirname, file), join(newProjectDir, file))
     )
 
@@ -87,35 +87,20 @@ class Build {
     writePromises.push(
       cp(join(__dirname, 'src'), join(newProjectDir, 'src'), { recursive: true }),
       cp(join(__dirname, 'public'), join(newProjectDir, 'public'), { recursive: true }),
-      writeFile(join(newProjectDir, '.env'), this.renderDotEnv(), 'utf8'),
-      writeFile(join(newProjectDir, 'package.json'), JSON.stringify(this.renderPackageDotJson(), null, 2), 'utf8'),
-      writeFile(join(newProjectDir, '.gitignore'), this.renderGitIgnore(), 'utf8'),
-      writeFile(join(newProjectDir, 'wrangler.toml'), this.renderWranglerDotToml(), 'utf8'),
-      writeFile(join(newProjectDir, 'tsconfig.typesafe.json'), this.renderTsconfigTypesafe(), 'utf8'),
+      writeFile(join(newProjectDir, '.env'), this.#renderDotEnv(), 'utf8'),
+      writeFile(join(newProjectDir, 'package.json'), JSON.stringify(this.#renderPackageDotJson(), null, 2), 'utf8'),
+      writeFile(join(newProjectDir, '.gitignore'), this.#renderGitIgnore(), 'utf8'),
+      writeFile(join(newProjectDir, 'wrangler.toml'), this.#renderWranglerDotToml(), 'utf8'),
     )
 
     await Promise.all(writePromises)
   }
 
 
-  renderDotEnv() {
+  #renderDotEnv() {
     return `ENV=local
 JWT_SECRET=${ randomBytes(64).toString('base64') }
 SESSION_SECRET=${ randomBytes(64).toString('base64') }
-`
-  }
-
-
-  renderTsconfigTypesafe() {
-    return `{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "noEmit": true,
-    "skipLibCheck": true
-  },
-  "include": ["src", ".ace"],
-  "exclude": ["node_modules", "dist", "build"]
-}
 `
   }
 
@@ -216,7 +201,7 @@ ${cuteString('💖 Thanks for creating w/ Ace! ✨ Docs: https://github.com/acet
   }
 
 
-  renderGitIgnore() {
+  #renderGitIgnore() {
     return `.env
 .vinxi
 .output
@@ -225,7 +210,7 @@ app.config.timestamp*\n`
   }
 
 
-  renderWranglerDotToml() {
+  #renderWranglerDotToml() {
     return `name = "${this.projectName}"
 compatibility_date = "${getWranglerCompatabilityDate()}"\n`
   }

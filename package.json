@@ -22,7 +22,8 @@
     "build": "ace build prod && vinxi build",
     "publish": "npm publish --access public",
     "typesafe": "tsc --project tsconfig.typesafe.json",
-    "build-cli": "ace build local && tsc -p cli.tsconfig.json && (chmod +x cli.js || true)"
+    "build-cli": "ace build local && tsc -p cli.tsconfig.json && (chmod +x cli.js || true)",
+    "cloud": "npm run build && npm run typesafe && npm version patch && git push && npm run publish"
   },
   "keywords": [
     "solid",
@@ -33,7 +34,7 @@
     "wizard"
   ],
   "devDependencies": {
-    "@acets-team/ace": "^0.0.45",
+    "@acets-team/ace": "^0.0.46",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.1.7",
