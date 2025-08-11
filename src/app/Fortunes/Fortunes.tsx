@@ -5,7 +5,7 @@ import { Title } from '@solidjs/meta'
 import { apiFortune } from '@ace/apis'
 import { Loading } from '@ace/loading'
 import { showToast } from '@ace/toast'
-import { APIName2Data } from '@ace/types'
+import { ApiName2Data } from '@ace/types'
 import { createKey } from '@ace/createKey'
 import RootLayout from '@src/app/RootLayout'
 import { randomBetween } from '@ace/randomBetween'
@@ -17,7 +17,7 @@ export default new Route('/fortunes')
   .layouts([RootLayout])
   .component((scope) => {  
     const forAnimator = new ForAnimator()
-    const [fortunes, setFortunes] = createKey<APIName2Data<'apiFortune'>[]>()
+    const [fortunes, setFortunes] = createKey<ApiName2Data<'apiFortune'>[]>()
 
     async function onClick() {
       forAnimator.preFetch()

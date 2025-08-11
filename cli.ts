@@ -46,9 +46,10 @@ class Build {
         dev: 'ace build local && vinxi dev',
         build: 'ace build prod && vinxi build',
         typesafe: 'tsc --project tsconfig.typesafe.json',
+        cloud: 'npm run typesafe && git push'
       },
       devDependencies: {
-        '@acets-team/ace': '^0.0.46',
+        '@acets-team/ace': '^0.0.72',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.3',
         '@solidjs/start': '^1.1.7',

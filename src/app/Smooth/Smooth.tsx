@@ -11,7 +11,7 @@ import RootLayout from '@src/app/RootLayout'
 import type { Element } from '@src/lib/types'
 import { Show, Suspense, type JSX } from 'solid-js'
 import { svg_npm, svg_github } from '@src/lib/svgs'
-import type { APIName2LoadResponse } from '@ace/types'
+import type { ApiName2LoadResponse } from '@ace/types'
 import { randomArrayItem } from '@ace/randomArrayItem'
 import type { ScopeComponent } from '@ace/scopeComponent'
 import { showToast, toastStyleDark, toastStyleLight, type ShowToastProps } from '@ace/toast'
@@ -20,10 +20,10 @@ import { showToast, toastStyleDark, toastStyleLight, type ShowToastProps } from 
 export default new Route('/smooth')
   .layouts([RootLayout])
   .component((scope) => {
-    const air = load(() => apiCharacter({pathParams: {element: 'air'}}), '💨')
-    const fire = load(() => apiCharacter({pathParams: {element: 'fire'}}), '🔥')
-    const earth = load(() => apiCharacter({pathParams: {element: 'earth'}}), '🌎')
-    const water = load(() => apiCharacter({pathParams: {element: 'water'}}), '💦')
+    const air = load({ key: '💨', fn: () => apiCharacter({pathParams: {element: 'air'}}) })
+    const fire = load({ key: '🔥', fn: () => apiCharacter({pathParams: {element: 'fire'}}) })
+    const earth = load({ key: '🌎', fn: () => apiCharacter({pathParams: {element: 'earth'}}) })
+    const water = load({ key: '💦', fn: () => apiCharacter({pathParams: {element: 'water'}}) })
 
     return <>
       <Title>😎 Smooth</Title>
@@ -52,7 +52,7 @@ function Notice() {
 }
 
 
-function Characters({ res }: { res: Record<Element, APIName2LoadResponse<'apiCharacter'>> }) {
+function Characters({ res }: { res: Record<Element, ApiName2LoadResponse<'apiCharacter'>> }) {
   return <>
     <div class="characters">
       <Character element={res.fire} />
@@ -64,7 +64,7 @@ function Characters({ res }: { res: Record<Element, APIName2LoadResponse<'apiCha
 }
 
 
-function Character({ element }: { element: APIName2LoadResponse<'apiCharacter'> }) {
+function Character({ element }: { element: ApiName2LoadResponse<'apiCharacter'> }) {
   return <>
     <div class="character">
       <Suspense fallback={<div class="ace-shimmer"></div>}>
@@ -95,7 +95,6 @@ function Links({scope}: {scope: ScopeComponent}) {
         {svg_npm()}
         <span>NPM</span>
       </a>
-
 
       <A path="/" solidAProps={{ class: 'brand', end: true }}>
         <span>🏡</span>
