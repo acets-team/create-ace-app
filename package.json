@@ -2,7 +2,7 @@
   "name": "create-ace-app",
   "license": "MIT",
   "type": "module",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "author": "https://github.com/acets-team",
   "homepage": "https://github.com/acets-team/create-ace-app#readme",
   "description": "👋 Ace is the typesafetiest framework! & npx create-ace-app@latest is a wizard to help us get started developing w/ Ace!",
