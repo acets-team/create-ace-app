@@ -6,6 +6,9 @@ export const config = {
   apiDir: './src/api',
   appDir: './src/app',
   logCaughtErrors: true,
+  origins: {
+    local: ['http://localhost:3000', 'http://localhost:3001']
+  },
   plugins: {
     solid: true,
     valibot: true,
