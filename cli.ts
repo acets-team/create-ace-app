@@ -49,13 +49,13 @@ class Build {
         cloud: 'npm run typesafe && git push'
       },
       devDependencies: {
-        '@acets-team/ace': '^0.0.82',
+        '@acets-team/ace': '^0.0.83',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.3',
         '@solidjs/start': '^1.1.7',
-        '@types/node': '^24.1.0',
-        'solid-js': '^1.9.7',
-        typescript: "^5.8.3",
+        '@types/node': '^24.3.0',
+        'solid-js': '^1.9.9',
+        typescript: "^5.9.2",
         valibot: '^1.1.0',
         vinxi: '^0.5.8',
       }
