@@ -1,4 +1,4 @@
-import './404.css'
+import './Unknown.css'
 import { A } from '@ace/a'
 import { Title } from '@solidjs/meta'
 import { Route404 } from '@ace/route404'
