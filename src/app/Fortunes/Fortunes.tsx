@@ -1,37 +1,37 @@
 import './Fortunes.css'
 import { Route } from '@ace/route'
+import { Submit } from '@ace/submit'
 import { For, Show } from 'solid-js'
 import { Title } from '@solidjs/meta'
-import { apiFortune } from '@ace/apis'
-import { Loading } from '@ace/loading'
 import { showToast } from '@ace/toast'
-import { ApiName2Data } from '@ace/types'
-import { createKey } from '@ace/createKey'
+import { Refresh } from '@src/lib/Refresh'
+import { apiGetFortune } from '@ace/apis'
+import { SmoothFor } from '@ace/smoothFor'
+import { useStore } from '@src/store/store'
 import RootLayout from '@src/app/RootLayout'
-import { randomBetween } from '@ace/randomBetween'
-import { fortunes as allFortunes } from '@src/lib/vars'
-import { AnimatedFor, ForAnimator } from '@ace/animatedFor'
+import { createOnSubmit } from '@ace/createOnSubmit'
 
 
 export default new Route('/fortunes')
   .layouts([RootLayout])
-  .component((scope) => {  
-    const forAnimator = new ForAnimator()
-    const [fortunes, setFortunes] = createKey<ApiName2Data<'apiFortune'>[]>()
+  .component(() => {  
+    const {set, sync, store} = useStore()
 
-    async function onClick() {
-      forAnimator.preFetch()
+    const smoothFor = new SmoothFor({ parent: '#smooth-fortunes', children: '.fortune' })
 
-      const pathParams = { id: randomBetween(0, allFortunes.length - 1) } 
+    const onFortuneButtonClick = createOnSubmit(() => {
+      apiGetFortune({
+        onData (d) {
+          smoothFor.preSync()
+          sync('fortunes', [d, ...store.fortunes])
+          smoothFor.postSync()
+        }
+      })
+    })
 
-      const res = await apiFortune({pathParams, bitKey: 'fortune'})
-
-      if (res.error?.message) showToast({ type: 'danger', value: res.error.message })
-
-      if (res.data) {
-        setFortunes([ res.data, ...fortunes ]) // bind to beginning
-        forAnimator.postSet()
-      }
+    const onResetClick = () => {
+      set('fortunes', [])
+      showToast({ type: 'success', value: 'Success!' })
     }
 
     return <>
@@ -41,17 +41,21 @@ export default new Route('/fortunes')
         <div class="emoji">✨</div>
         <div class="page-title">Fortunes 🧚‍♀️</div>
 
-        <button onClick={onClick} disabled={scope.bits.isOn('fortune')} class="brand gold" type="button">
-          <Show when={scope.bits.isOn('fortune')} fallback="Click for Fortunes!">
-            <Loading type="two" />
-          </Show>
-        </button>
+        <div class="buttons">
+          <form onSubmit={onFortuneButtonClick}>
+            <Submit label="Click for Fortunes!" bitKey="apiGetFortune" $button={{class: 'brand gold'}} $Loading={{type: 'two'}} />
+          </form>
 
-        <AnimatedFor forAnimator={forAnimator} divProps={{class: 'items'}}>
-          <For each={fortunes}>{
-            (item) => <div class="fortune">{item.fortune}</div>
+          <Show when={store.fortunes.length}>
+            <Refresh onClick={onResetClick} tooltipContent="Refresh Fortunes" position="topLeft" />
+          </Show>
+        </div>
+
+        <div id="smooth-fortunes">
+          <For each={store.fortunes}>{
+            (item) => <div class="fortune" ref={smoothFor.ref()}>{item.text}</div>
           }</For>
-        </AnimatedFor>
+        </div>
       </main>
     </>
   })

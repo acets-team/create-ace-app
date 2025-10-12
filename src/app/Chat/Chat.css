@@ -1,0 +1,100 @@
+
+main.chat {
+  display: flex;
+  flex-direction: column;
+  height: 81vh;
+  margin: 3rem auto 0 auto;
+  max-width: 60rem;
+  background: linear-gradient(
+    to bottom right,
+    rgba(25, 32, 54, 0.9),
+    rgba(10, 10, 20, 0.9)
+  );
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 216, 255, 0.03);
+  backdrop-filter: blur(20px);
+
+  .head {
+    text-align: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    font-size: 2rem;
+  }
+
+  #chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-lite);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    scroll-behavior: smooth;
+
+    .message {
+      display: inline-block;
+      max-width: 80%;
+      padding: 1rem 1.5rem;
+      border-radius: 1.6rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+      animation: goodRising 0.3s ease;
+      &.me {
+        align-self: flex-end;
+        background: #007aff;
+        color: white;
+        border-bottom-right-radius: 0.3rem;
+      }
+      &.friend {
+        align-self: flex-start;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-color);
+        border-bottom-left-radius: 0.3rem;
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    gap: 0.9rem;
+    padding: 1rem var(--space-lite);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background-color: rgba(15,15,25,0.8);
+    backdrop-filter: blur(10px);
+  }
+
+  input {
+    flex: 1;
+    min-width: 1rem;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-size: 1.7rem;
+    padding: 1rem 1.5rem;
+    border-radius: 999px;
+    transition: var(--transition);
+  }
+
+  input:focus {
+    background: rgba(255,255,255,0.15);
+  }
+
+  [type="submit"] {
+    background: var(--link-color);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 0 1.8rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  form [type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 216, 255, 0.3);
+  }
+}

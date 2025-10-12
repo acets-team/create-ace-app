@@ -1,12 +1,12 @@
-import { createSignal } from 'solid-js'
+import { useStore } from '@src/store/store'
 
 
 export function Counter() {
-  const [count, setCount] = createSignal(0)
+  const {set, store} = useStore()
 
   return <>
-    <button class="counter brand" onClick={() => setCount(count() + 1)} type="button">
-      Count: {count()}
+    <button class="counter brand" onClick={() => set('count', store.count + 1)} type="button">
+      Count: {store.count}
     </button>
   </>
 }

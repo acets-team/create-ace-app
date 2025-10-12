@@ -15,7 +15,7 @@ export default new Route404()
         <div class="code">404 😅</div>
         <div class="message">We don't have a page called:</div>
         <div class="path">{location.pathname}</div>
-        <A path="/" solidAProps={{class: 'brand'}}>🏡 Go Back Home</A>
+        <A path="/" $a={{class: 'brand'}}>🏡 Go Back Home</A>
       </main>
     </>
   })

@@ -23,7 +23,7 @@
     "publish": "npm publish --access public",
     "typesafe": "tsc --project tsconfig.typesafe.json",
     "build-cli": "ace build local && tsc -p cli.tsconfig.json && (chmod +x cli.js || true)",
-    "cloud": "npm run build && npm run typesafe && npm version patch && git push && npm run publish"
+    "cloud": "npm run build && npm run typesafe && npm version minor && git push && npm run publish"
   },
   "keywords": [
     "solid",
@@ -34,11 +34,15 @@
     "wizard"
   ],
   "devDependencies": {
-    "@acets-team/ace": "^0.0.90",
+    "@acets-team/ace": "^0.1.0",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.1.7",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.3.0",
+    "ag-grid-community": "^34.2.0",
+    "chart.js": "^4.5.0",
+    "markdown-it": "^14.1.0",
     "solid-js": "^1.9.9",
     "typescript": "^5.9.2",
     "valibot": "^1.1.0",

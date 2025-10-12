@@ -1,9 +1,14 @@
 import './Nav.css'
+import { Show } from 'solid-js'
+import { Refresh } from '@src/lib/Refresh'
 import { Tabs, RouteTab } from '@ace/tabs'
 import { Counter } from '@src/lib/Counter'
+import { useStore } from '@src/store/store'
 
 
-export function Nav () {
+export function Nav (props?: {showRefresh?: boolean}) {
+  const {set} = useStore()
+
   return <>
     <nav>
       <Counter />
@@ -11,12 +16,16 @@ export function Nav () {
       <Tabs
         mode="route"
         variant="pill"
-        tabs={[
+        tabs={() => [
           new RouteTab('Home', '/'),
+          new RouteTab('Chat', '/chat'),
           new RouteTab('Fortunes', '/fortunes'),
-          new RouteTab('Smooth', '/smooth'),
         ]}
       />
+
+      <Show when={props?.showRefresh}>
+        <Refresh onClick={() => set('count', 0)} tooltipContent="Refresh Count" />
+      </Show>
     </nav>
   </>
 }

@@ -12,5 +12,8 @@ export const config = {
   plugins: {
     solid: true,
     valibot: true,
+    agGrid: true,
+    markdownIt: true,
+    chartjs: true,
   }
 }
