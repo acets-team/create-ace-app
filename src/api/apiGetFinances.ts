@@ -18,7 +18,7 @@ export const GET = new API('/api/get-finances', 'apiGetFinances')
 
 function getFinanceSummary(): FinanceSummary {
   return {
-    balance: 369,
+    balance: 18549,
     monthlyIncome: 7281,
     monthlyExpenses: 1521,
   }

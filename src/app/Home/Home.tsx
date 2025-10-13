@@ -156,10 +156,10 @@ function Categories() {
             data: {
               labels: chart().labels,
               datasets: [{
-                data: chart().data,
-                backgroundColor: colors,
                 borderWidth: 0,
                 hoverOffset: 8,
+                data: chart().data,
+                backgroundColor: colors,
               }]
             },
             options: {
@@ -182,9 +182,9 @@ function Categories() {
               data: {
                 labels: chart().labels,
                 datasets: [{
+                  tension: 0.3,
                   label: 'Expenses',
                   data: chart().data,
-                  tension: 0.3,
                   backgroundColor: colors,
                   borderColor: 'rgba(255, 255, 255, 0.6)',
                 }]
@@ -290,7 +290,6 @@ function Transactions() {
     </div>
   </>
 }
-
 
 
 
