@@ -1,15 +1,10 @@
 /** 
- * - Common vars file, that WILL be injected into the `fe` AND `be` build
+ * - Common vars file, that WILL be injected into the `fe` AND `be` build, anything imported into this file will too!
  * - 🚨 Do not put secret information into this file, use the `.env` file for that please
  */
 
-import { Enums } from '@ace/enums'
-
 
 export const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })
-
-
-export const elements = new Enums(['air', 'fire', 'water', 'earth'])
 
 
 export const emojis = ['🚨', '🌹', '❤️', '🔥', '😎', '👷‍♀️', '🙏', '🎄', '✅', '💚', '🐛', '🦋', '🐬', '🌸', '🪷']
