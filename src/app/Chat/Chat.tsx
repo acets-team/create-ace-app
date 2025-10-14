@@ -3,6 +3,7 @@ import { For } from 'solid-js'
 import { Route } from '@ace/route'
 import { Title } from '@solidjs/meta'
 import { emojis } from '@src/lib/vars'
+import { svg_up } from '@src/lib/svgs'
 import { Refresh } from '@src/lib/Refresh'
 import { useStore } from '@src/store/store'
 import RootLayout from '@src/app/RootLayout'
@@ -68,7 +69,9 @@ export default new Route('/chat')
         <form onSubmit={onSubmit} ref={refFormReset()}>
           <Refresh onClick={onResetClick} tooltipContent="Refresh Chat" />
           <input ref={refBind('chatMessage')} type="text" placeholder="Type a message..." autocomplete="off" />
-          <button type="submit">Send</button>
+          <button type="submit">
+            {svg_up()}
+          </button>
         </form>
       </main>
     </>

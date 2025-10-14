@@ -83,14 +83,17 @@ main.chat {
   }
 
   [type="submit"] {
-    background: var(--link-color);
+    background: #007aff;
     color: #fff;
     border: none;
-    border-radius: 999px;
-    padding: 0 1.8rem;
-    font-size: 1.7rem;
+    border-radius: 50%;
+    height: 4.5rem;
+    width: 4.5rem;
     cursor: pointer;
     transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   form [type="submit"]:hover {

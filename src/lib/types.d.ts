@@ -22,3 +22,9 @@ export type ChartData = {
   id: string
   amount: number
 }
+
+export type ChatMessage = {
+  id: string,
+  message: string,
+  userType: 'me' | 'friend'
+}

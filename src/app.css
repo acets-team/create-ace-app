@@ -37,7 +37,6 @@ body * {
 }
 
 #app {
-  overflow: auto;
   background-color: var(--bg-color);
   padding: var(--space) var(--space-lite);
 }
