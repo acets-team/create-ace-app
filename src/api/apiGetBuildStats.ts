@@ -13,14 +13,15 @@ function getMarkdown() {
   return `## 🤓 \`npm run build\`
 
 This app's stats! 🧐!
-  
-### 🧱 FE Bundle (processed & cached by browser)
-
-**Total:** ~45 KB gzip (≈ 📸 the size of a small photo)  
-
----
 
 ### 🧩 BE Bundle (processed by Workers or Servers)
 
-**Total:** ~36 KB gzip (≈ 📝 a 6-7 page Word document)`
+**Total:** ~36 KB gzip (≈ 📝 a 6-7 page Word document)
+
+---
+
+### 🧱 FE Bundle (processed & cached by browser)
+
+**Total:** ~45 KB gzip (≈ 📸 the size of a small photo)`
+
 }
