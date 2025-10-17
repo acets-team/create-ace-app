@@ -1,8 +1,9 @@
 import { API } from '@ace/api'
 import { msDay } from '@ace/ms'
 import { date2Iso } from '@ace/date2Iso'
+import { ChartJsMap } from '@ace/types'
 import { dateShift } from '@ace/dateShift'
-import type { ChartData, Transaction, FinanceSummary } from '@src/lib/types'
+import type { Transaction, FinanceSummary } from '@src/lib/types'
 
 
 export const GET = new API('/api/get-finances', 'apiGetFinances')
@@ -25,7 +26,7 @@ function getFinanceSummary(): FinanceSummary {
 }
 
 
-function getCashFlow(): ChartData[] {
+function getCashFlow(): ChartJsMap[] {
   return [
     {id: 'Jan', amount: 2100},
     {id: 'Feb', amount: 2700},
@@ -37,7 +38,7 @@ function getCashFlow(): ChartData[] {
 }
 
 
-function getCategories(): ChartData[] {
+function getCategories(): ChartJsMap[] {
   return [
     {id: 'Food', amount: 600},
     {id: 'Health', amount: 630},

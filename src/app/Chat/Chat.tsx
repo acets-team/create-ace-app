@@ -50,6 +50,8 @@ export default new Route('/chat')
 
 
     const onResetClick = () => {
+      if (!store.chatMessages.length) return showErrorToast('Need an internet lesson?! 👩‍🏫')
+
       set('chatMessages', [])
       showToast({type: 'success', value: 'Success!'})
     }

@@ -18,7 +18,7 @@ html,
 }
 
 html {
-  font-size: 62.5%; /* 🚨 Don't delete: https://stackoverflow.com/questions/59920538 If you do when ya import Ace styles like load, shimmer, toast, tooltip, carousel etc they won't work */
+  font-size: 62.5%; /* 🚨 Don't delete: https://stackoverflow.com/questions/59920538 If you do when ya import Ace styles like load, pulse, toast, tooltip, carousel etc they won't work */
 }
 
 body,

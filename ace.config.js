@@ -1,8 +1,8 @@
 // @ts-check 
 
-
 /** @type {import('@acets-team/ace').AceConfig} */
 export const config = {
+  sw: true,
   apiDir: './src/api',
   appDir: './src/app',
   logCaughtErrors: true,

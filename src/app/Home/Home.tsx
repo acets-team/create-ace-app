@@ -1,24 +1,25 @@
 import './Home.css'
+import { Show } from 'solid-js'
 import { Nav } from '@src/Nav/Nav'
 import { Route } from '@ace/route'
 import { Pulse } from '@ace/pulse'
+import { AgGrid } from '@ace/agGrid'
 import { Title } from '@solidjs/meta'
 import { Loading } from '@ace/loading'
-import { dateRead } from '@ace/dateRead'
+import { ChartJs } from '@ace/chartjs'
 import { Markdown } from '@ace/markdown'
-import { ChartJS } from '@ace/chartjs'
+import { dateRead } from '@ace/dateRead'
 import { date2Iso } from '@ace/date2Iso'
 import { Refresh } from '@src/lib/Refresh'
-import { createMemo, Show } from 'solid-js'
 import { useStore } from '@src/store/store'
 import RootLayout from '@src/app/RootLayout'
 import { emojis, formatter } from '@src/lib/vars'
-import { AgGrid, type AgParams } from '@ace/agGrid'
 import { randomBetween } from '@ace/randomBetween'
 import { randomArrayItem } from '@ace/randomArrayItem'
+import { agGridComponent } from '@ace/agGridComponent'
+import { agGridCellRenderer } from '@ace/agGridCellRenderer'
 import { apiGetBuildStats, apiGetFinances } from '@ace/apis'
 import type { FinanceSummary, Transaction } from '@src/lib/types'
-
 
 
 export default new Route('/')
@@ -75,9 +76,9 @@ function Welcome() {
       <h2>Welcome to Create Ace App ✨</h2>
 
       <div class="features">
-        <span>✅ State stored in indexdb!</span>
+        <span>✅ State saved through refresh!</span>
         <span>✅ API calls, anchors & redirects are typesafe!</span>
-        <span>✅ Looks ugly tho!</span>
+        <span>✅ State saved while offline!</span>
       </div>
     </section>
   </>
@@ -104,29 +105,20 @@ function Summary(props: { label: string, key: keyof FinanceSummary }) {
 }
 
 
+
 function Categories() {
-  const {sync, store} = useStore()
   const defaultCategoriesCount = 4
+
+  const {sync, store} = useStore()
+
   const colors = ['#38bdf8', '#8e7cfb', '#3b82f6', '#4ade80',  '#ffb8d2', '#facc15', '#0284c7', '#b43c02']
-
-  const chart = createMemo(() => {
-    const data: number[] = []
-    const labels: string[] = []
-
-    for (const c of store.financeCategories) {
-      labels.push(c.id)
-      data.push(c.amount)
-    }
-
-    return { data, labels }
-  })
 
   const addCategory = () => {
     sync('financeCategories', [
       ...store.financeCategories,
       {
         id: randomArrayItem(emojis),
-        amount: (chart().data.at(-1) ?? 0) + 38
+        amount: (store.financeCategories.at(-1)?.amount ?? 0) + 38
       }
     ])
   }
@@ -143,22 +135,22 @@ function Categories() {
           <Show when={store.financeCategories.length > defaultCategoriesCount}>
             <Refresh onClick={refreshCategories} tooltipContent="Refresh Categories" />
           </Show>
-          
+
           <button class="brand" onClick={addCategory}>Add Category</button>
         </div>
       </div>
 
       <div class="body two-col">
-        <ChartJS
+        <ChartJs
           $canvas={{class: 'doughnut'}}
-          config={() => ({
+          map={() => store.financeCategories}
+          config={{
             type: 'doughnut',
             data: {
-              labels: chart().labels,
               datasets: [{
+                data: [],
                 borderWidth: 0,
                 hoverOffset: 8,
-                data: chart().data,
                 backgroundColor: colors,
               }]
             },
@@ -172,19 +164,19 @@ function Categories() {
                 }
               }
             }
-          })}
-        />
+          }} />
 
         <div class="charts">
-          <ChartJS
-            config={() => ({
+          <ChartJs
+            map={() => store.financeCategories}
+            config={{
               type: 'line',
               data: {
-                labels: chart().labels,
+                labels: [],
                 datasets: [{
                   tension: 0.3,
                   label: 'Expenses',
-                  data: chart().data,
+                  data: [],
                   backgroundColor: colors,
                   borderColor: 'rgba(255, 255, 255, 0.6)',
                 }]
@@ -196,35 +188,33 @@ function Categories() {
                   y: { ticks: { color: '#cfd8e3' } }
                 }
               }
-            })}
-          />
+            }} />
 
-          <ChartJS
-            config={() => ({
-              type: 'bar',
-              data: {
-                labels: chart().labels,
-                datasets: [{
-                  label: 'Expenses',
-                  data: chart().data,
-                  backgroundColor: colors,
-                }]
-              },
-              options: {
-                plugins: { legend: { display: false } },
-                scales: {
-                  x: { ticks: { color: '#cfd8e3' } },
-                  y: { ticks: { color: '#cfd8e3' } }
+          <ChartJs
+            map={() => store.financeCategories}
+            config={{
+                type: 'bar',
+                data: {
+                  labels: [],
+                  datasets: [{
+                    label: 'Expenses',
+                    data: [],
+                    backgroundColor: colors,
+                  }]
+                },
+                options: {
+                  plugins: { legend: { display: false } },
+                  scales: {
+                    x: { ticks: { color: '#cfd8e3' } },
+                    y: { ticks: { color: '#cfd8e3' } }
+                  }
                 }
-              }
-            })}
-          />
+              }} />
         </div>
       </div>
     </div>
   </>
 }
-
 
 
 function Transactions() {
@@ -261,28 +251,18 @@ function Transactions() {
             defaultColDef: { flex: 1, sortable: true, resizable: true },
             columnDefs: [
               {
+                sort: 'desc',
                 field: 'date',
                 filter: 'agDateColumnFilter',
-                sort: 'desc',
-                cellRenderer (params: AgParams<Transaction[]>) {
-                  return params.data?.date ? dateRead({ date: params.data.date }) : 'Unknown'
-                }
+                cellRenderer: agGridCellRenderer({ component: TableCellDate }),
               },
               { field: 'description', filter: 'agTextColumnFilter', },
               {
                 field: 'amount',
-                cellStyle: { textAlign: 'right' },
                 sortable: false,
-                cellRenderer (params: AgParams<Transaction[]>) {
-                  const amount = () => (params.data?.amount ?? 0)
-
-                  return <>
-                    <div classList={{ up: amount() > 0 }} class="table-amount">
-                      { formatter.format(Math.abs(amount())) }
-                    </div>
-                  </>
-                }
-              },
+                cellStyle: { textAlign: 'right' },
+                cellRenderer: agGridCellRenderer({ component: TableCellAmount }),
+              }
             ],
           })}
         />
@@ -292,12 +272,29 @@ function Transactions() {
 }
 
 
+const TableCellDate = agGridComponent<Transaction>(params => {
+  const date = params.data?.date
+  return <>{date ? dateRead({ date }) : 'Unknown'}</>
+})
+
+
+const TableCellAmount = agGridComponent<Transaction>(params => {
+  const amount = params.data?.amount ?? 0
+
+  return <>
+    <div classList={{ up: amount > 0 }} class="table-amount">
+      {formatter.format(Math.abs(amount))}
+    </div>
+  </>
+})
+
+
 
 function MarkdownIncoming() {
   return <>
     <div class="markdown-incoming">
-      <Pulse $div={{class: 'h1'}} />
-      <Pulse $div={{class: 'p'}} />
+      <Pulse $div={{ class: 'h1' }} />
+      <Pulse $div={{ class: 'p' }} />
     </div>
   </>
 }

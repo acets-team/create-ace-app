@@ -10,16 +10,21 @@ import { SmoothFor } from '@ace/smoothFor'
 import { useStore } from '@src/store/store'
 import RootLayout from '@src/app/RootLayout'
 import { createOnSubmit } from '@ace/createOnSubmit'
+import { useNetworkStatus } from '@ace/useNetworkStatus'
 
 
 export default new Route('/fortunes')
   .layouts([RootLayout])
-  .component(() => {  
+  .component(() => {
+    const status = useNetworkStatus()
+    
     const {set, sync, store} = useStore()
 
     const smoothFor = new SmoothFor({ parent: '#smooth-fortunes', children: '.fortune' })
 
     const onFortuneButtonClick = createOnSubmit(() => {
+      if (status() === 'offline') return showToast({ type: 'info', value: '👷‍♀️ Please regain wifi!' })
+
       apiGetFortune({
         onData (d) {
           smoothFor.preSync()
@@ -29,7 +34,8 @@ export default new Route('/fortunes')
       })
     })
 
-    const onResetClick = () => {
+    const onRefreshClick = () => {
+      if (status() === 'offline') return showToast({ type: 'info', value: '👷‍♀️ Please regain wifi!' })
       set('fortunes', [])
       showToast({ type: 'success', value: 'Success!' })
     }
@@ -47,7 +53,7 @@ export default new Route('/fortunes')
           </form>
 
           <Show when={store.fortunes.length}>
-            <Refresh onClick={onResetClick} tooltipContent="Refresh Fortunes" position="topLeft" />
+            <Refresh onClick={onRefreshClick} tooltipContent="Refresh Fortunes" position="topLeft" />
           </Show>
         </div>
 

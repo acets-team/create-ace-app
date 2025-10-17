@@ -94,10 +94,13 @@ main.chat {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  form [type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 216, 255, 0.3);
+    &:disabled {
+      cursor: default;
+      opacity: 0.5;
+    }
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 216, 255, 0.3);
+    }
   }
 }

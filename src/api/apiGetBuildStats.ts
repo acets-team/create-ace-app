@@ -23,5 +23,4 @@ This app's stats! 🧐!
 ### 🧱 FE Bundle (processed & cached by browser)
 
 **Total:** ~45 KB gzip (≈ 📸 the size of a small photo)`
-
 }
