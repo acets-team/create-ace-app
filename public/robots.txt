@@ -1,0 +1,24 @@
+# robots.txt for Ace App
+# Last updated: 2025-10-18
+
+# Allow all crawlers to index public pages
+User-agent: *
+
+# Allow your main pages and PWA assets
+Allow: /
+
+# Disallow sensitive or build-specific routes
+Disallow: /build/
+Disallow: /server-fns/
+Disallow: /api/
+Disallow: /_app/
+Disallow: /sw.js
+Disallow: /sw_*.js
+
+# Sitemap for better SEO indexing
+Sitemap: https://feelinglovelynow.com/sitemap.xml
+
+# Notes:
+# - Bundle size: ~462 kB gzip total
+# - SSR is used, so crawlers can index rendered HTML
+# - PWA and CDN resources are cache-safe

@@ -13,7 +13,6 @@ html,
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
   font-family: "Helvetica Neue", sans-serif;
 }
 
@@ -110,14 +109,8 @@ button.brand {
 main {
   width: 100%;
   max-width: 60rem;
-  margin: 3rem auto 0 auto;
   position: relative;
-
-  ol {
-    list-style-position: inside;
-    text-align: center;
-    padding-left: 0;
-  }
+  margin: var(--space) auto 0 auto;
 
   .ace-pulse {
     background-color: #0f172a;

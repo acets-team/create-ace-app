@@ -17,9 +17,13 @@ import { emojis, formatter } from '@src/lib/vars'
 import { randomBetween } from '@ace/randomBetween'
 import { randomArrayItem } from '@ace/randomArrayItem'
 import { agGridComponent } from '@ace/agGridComponent'
+import { themeAgGrid } from '@src/init/themeAgGrid'
+import { apiGetAppInfo, apiGetFinances } from '@ace/apis'
 import { agGridCellRenderer } from '@ace/agGridCellRenderer'
-import { apiGetBuildStats, apiGetFinances } from '@ace/apis'
+import { registerAgGrid } from '@src/init/registerAgGrid'
+import { registerChartJs } from '@src/init/registerChartJs'
 import type { FinanceSummary, Transaction } from '@src/lib/types'
+
 
 
 export default new Route('/')
@@ -27,7 +31,7 @@ export default new Route('/')
   .component(() => {
     const {set, sync, store} = useStore()
 
-    apiGetBuildStats({
+    apiGetAppInfo({
       queryType: 'stream',
       onData: (d) => set('buildStats', d),
     })
@@ -142,7 +146,8 @@ function Categories() {
 
       <div class="body two-col">
         <ChartJs
-          $canvas={{class: 'doughnut'}}
+          register={registerChartJs}
+          $canvas={{ class: 'doughnut' }}
           map={() => store.financeCategories}
           config={{
             type: 'doughnut',
@@ -168,6 +173,7 @@ function Categories() {
 
         <div class="charts">
           <ChartJs
+            register={registerChartJs}
             map={() => store.financeCategories}
             config={{
               type: 'line',
@@ -191,6 +197,7 @@ function Categories() {
             }} />
 
           <ChartJs
+            register={registerChartJs}
             map={() => store.financeCategories}
             config={{
                 type: 'bar',
@@ -246,7 +253,9 @@ function Transactions() {
 
       <div class="body">
         <AgGrid 
+          register={registerAgGrid}
           gridOptions={() => ({
+            theme: themeAgGrid(),
             rowData: store.transactions,
             defaultColDef: { flex: 1, sortable: true, resizable: true },
             columnDefs: [

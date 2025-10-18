@@ -49,7 +49,7 @@ class Build {
         cloud: 'npm run typesafe && git push'
       },
       devDependencies: {
-        '@acets-team/ace': '^0.2.0',
+        '@acets-team/ace': '^0.3.0',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.3',
         '@solidjs/start': '^1.1.7',

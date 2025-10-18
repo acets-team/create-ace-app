@@ -11,7 +11,7 @@ export function Refresh(props: { tooltipContent: string, onClick: JSX.EventHandl
   }))
 
   return <>
-    <button ref={tooltip} onClick={props.onClick} type="button" class="brand refresh">
+    <button ref={tooltip} onClick={props.onClick} type="button" class="brand refresh" aria-label={props.tooltipContent}>
       {svg_refresh()}
     </button>
   </>

@@ -1,6 +1,5 @@
 main.home {
   max-width: 108rem;
-  margin: 4rem auto;
   padding: var(--space-lite);
   background-color: var(--bg-color);
   border-radius: 2rem;
@@ -48,6 +47,10 @@ main.home {
   .markdown {
     h2 {
       text-align: center;
+    }
+
+    h4 {
+      margin-bottom: -6px;
     }
   }
 
@@ -177,7 +180,7 @@ main.home {
             content: ' ❤️'
           }
           &.up:after {
-            content: ' ✅'
+            content: ' 💚'
           }
         }
       }
