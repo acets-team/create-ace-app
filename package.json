@@ -20,7 +20,7 @@
     "prepublishOnly": "npm run build && npm run build-cli",
     "dev": "ace build local && vinxi dev",
     "build": "ace build prod && vinxi build",
-    "publish": "npm publish --access public",
+    "cloud": "git push && npm publish --access public",
     "typesafe": "tsc --project tsconfig.typesafe.json",
     "build-cli": "ace build local && tsc -p cli.tsconfig.json && (chmod +x cli.js || true)",
     "prep": "npm run typesafe && npm version patch && npm run dev"
