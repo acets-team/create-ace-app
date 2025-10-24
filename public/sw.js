@@ -2,6 +2,6 @@
 
 import { addOfflineSupport } from '../.ace/addOfflineSupport.js'
 
-const packageDotJsonVersion = '0.3.3'
+const packageDotJsonVersion = '0.4.0'
 
 addOfflineSupport({ cacheName: `offline-cache-v-${packageDotJsonVersion}` })
