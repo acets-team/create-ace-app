@@ -12,7 +12,7 @@ export const GET = new API('/api/get-app-info', 'apiGetAppInfo')
 function getMarkdown() {
   return `## 🤓 \`Markdown Example\`
 
-Quick run down of what this app does! Sooo much power at your fingertips! Great responsibility btw! :)
+Quick run down of what this app does! Sooo much power is at your fingertips! Great responsibility btw! :)
 
 #### 🧠 State
 1. State saved while offline ✅
