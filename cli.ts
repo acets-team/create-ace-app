@@ -39,6 +39,7 @@ class Build {
     return {
       name: this.projectName,
       type: 'module',
+      version: '0.0.1',
       engines: {
         node: '>=22'
       },
@@ -46,7 +47,8 @@ class Build {
         dev: 'ace build local && vinxi dev',
         build: 'ace build prod && vinxi build',
         typesafe: 'tsc --project tsconfig.typesafe.json',
-        cloud: 'npm run typesafe && git push'
+        cloud: 'git push && npm publish --access public',
+        'pre-cloud': 'npm run typesafe && npm version patch && npm run dev',
       },
       devDependencies: {
         '@acets-team/ace': '^0.4.0',

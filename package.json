@@ -23,7 +23,7 @@
     "cloud": "git push && npm publish --access public",
     "typesafe": "tsc --project tsconfig.typesafe.json",
     "build-cli": "ace build local && tsc -p cli.tsconfig.json && (chmod +x cli.js || true)",
-    "prep": "npm run typesafe && npm version patch && npm run dev"
+    "pre-cloud": "npm run typesafe && npm version patch && npm run dev"
   },
   "keywords": [
     "solid",
