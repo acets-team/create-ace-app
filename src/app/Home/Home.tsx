@@ -7,11 +7,11 @@ import { AgGrid } from '@ace/agGrid'
 import { Title } from '@solidjs/meta'
 import { Loading } from '@ace/loading'
 import { ChartJs } from '@ace/chartjs'
-import { Markdown } from '@ace/markdown'
 import { dateRead } from '@ace/dateRead'
 import { date2Iso } from '@ace/date2Iso'
 import { Refresh } from '@src/lib/Refresh'
 import { useStore } from '@src/store/store'
+import { MarkdownIt } from '@ace/markdownIt'
 import RootLayout from '@src/app/RootLayout'
 import { emojis, formatter } from '@src/lib/vars'
 import { randomBetween } from '@ace/randomBetween'
@@ -64,7 +64,7 @@ export default new Route('/')
         </section>
 
         <Show when={store.buildStats} fallback={<MarkdownIncoming />}>
-          <Markdown content={() => store.buildStats} $div={{class: 'markdown'}} />
+          <MarkdownIt content={() => store.buildStats} $div={{class: 'markdown'}} />
         </Show>
 
         <Nav showRefresh={true} />
