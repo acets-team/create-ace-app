@@ -44,8 +44,8 @@ class Build {
         node: '>=22'
       },
       scripts: {
-        dev: 'ace build local && vinxi dev',
-        build: 'ace build prod && vinxi build',
+        dev: 'ace build local && ace swVersion && vinxi dev',
+        build: 'ace build prod && ace swVersion && vinxi build',
         typesafe: 'tsc --project tsconfig.typesafe.json',
         cloud: 'git push && npm publish --access public',
         'pre-cloud': 'npm run typesafe && npm version patch && npm run dev',
