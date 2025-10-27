@@ -44,14 +44,14 @@ class Build {
         node: '>=22'
       },
       scripts: {
-        dev: 'ace build local && ace swVersion && vinxi dev',
-        build: 'ace build prod && ace swVersion && vinxi build',
+        dev: 'ace build local && ace sw && vinxi dev',
+        build: 'ace build prod && ace sw && vinxi build',
         typesafe: 'tsc --project tsconfig.typesafe.json',
         cloud: 'git push && npm publish --access public',
         'pre-cloud': 'npm run typesafe && npm version patch && npm run dev',
       },
       devDependencies: {
-        '@acets-team/ace': '^0.4.0',
+        '@acets-team/ace': '^0.5.0',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.3',
         '@solidjs/start': '^1.1.7',
