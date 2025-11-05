@@ -46,6 +46,7 @@ export default new Route('/')
     apiGetFinances({
       queryType: 'stream',
       onSuccess(d) {
+        debugger
         sync('financeSummary', d.summary)
         sync('financeCategories', d.categories)
       }
