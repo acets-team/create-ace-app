@@ -1,0 +1,10 @@
+{
+  "name": "create-ace-app",
+  "compatibility_date": "2025-11-04",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
