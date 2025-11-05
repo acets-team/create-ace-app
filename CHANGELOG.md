@@ -5,6 +5,13 @@
 
 
 
+## [0.6.2] - 2025-11-04
+
+### 🧠 Improved
+- Updated `ace.config.js` w/ `origins` > `prod`
+
+
+
 ## [0.6.1] - 2025-11-04
 
 ### ✨ Added
@@ -48,5 +55,6 @@
 
 
 
+[0.6.1]: https://github.com/acets-team/create-ace-app/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/acets-team/create-ace-app/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/acets-team/create-ace-app/releases/tag/v0.6.0
