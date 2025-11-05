@@ -42,13 +42,20 @@ export default new Route('/')
       queryType: 'stream',
       onSuccess: (d) => sync('transactions', d)
     })
+    console.log('above apiGetFinances')
 
     apiGetFinances({
       queryType: 'stream',
       onSuccess(d) {
-        debugger
+        console.log('onSuccess', d)
         sync('financeSummary', d.summary)
         sync('financeCategories', d.categories)
+      },
+      onError(e) {
+        console.log('onError', e)
+      },
+      onResponse(r) {
+        console.log('onResponse', r)
       }
     })
 
