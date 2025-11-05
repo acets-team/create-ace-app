@@ -47,7 +47,8 @@ class Build {
         dev: 'ace build local && ace sw && vinxi dev',
         "dev-fresh": "rm -rf .ace && npm run dev",
         build: 'ace build prod && ace sw && vinxi build',
-        typesafe: 'tsc --project tsconfig.typesafe.json'
+        typesafe: 'tsc --project tsconfig.typesafe.json',
+        'bump': 'ace build local && ace sw'
       },
       devDependencies: {
         '@acets-team/ace': '^0.6.1',
