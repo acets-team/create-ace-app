@@ -30,10 +30,6 @@
     - typescript
 
 
-### 🐛 Fixed
-
-
-
 ### 🗑️ Removed
 - `<MarkdownIncoming/>` @ `Home.tsx` b/c it's static now
 
@@ -42,5 +38,4 @@
 
 
 
-[0.6.1]: https://github.com/acets-team/ace/compare/v0.6.0...v0.6.1
-[0.6.0]: https://github.com/acets-team/ace/releases/tag/v0.6.0
+[0.6.0]: https://github.com/acets-team/create-ace-app/releases/tag/v0.6.0

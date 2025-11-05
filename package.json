@@ -5,7 +5,7 @@
   "version": "0.5.0",
   "author": "https://github.com/acets-team",
   "homepage": "https://github.com/acets-team/create-ace-app#readme",
-  "description": "👋 Ace is the typesafetiest framework! & npx create-ace-app@latest is a wizard to help us get started developing w/ Ace!",
+  "description": "❤️ npx create-ace-app@latest runs a script to create an Ace application!",
   "bin": {
     "create-ace-app": "./cli.js"
   },
