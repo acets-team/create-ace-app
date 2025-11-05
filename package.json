@@ -23,7 +23,8 @@
     "publish": "npm publish --access public",
     "typesafe": "tsc --project tsconfig.typesafe.json",
     "dev": "ace build local && ace sw && vinxi dev",
-    "dev-fresh": "rm -rf .ace && npm run dev"
+    "dev-fresh": "rm -rf .ace && npm run dev",
+    "bump": "ace build local && ace sw"
   },
   "keywords": [
     "solid",
