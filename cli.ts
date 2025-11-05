@@ -45,23 +45,24 @@ class Build {
       },
       scripts: {
         dev: 'ace build local && ace sw && vinxi dev',
+        "dev-fresh": "rm -rf .ace && npm run dev",
         build: 'ace build prod && ace sw && vinxi build',
-        typesafe: 'tsc --project tsconfig.typesafe.json',
-        cloud: 'git push && npm publish --access public',
-        'pre-cloud': 'npm run typesafe && npm version patch && npm run dev',
+        typesafe: 'tsc --project tsconfig.typesafe.json'
       },
       devDependencies: {
-        '@acets-team/ace': '^0.5.0',
+        '@acets-team/ace': '^0.6.1',
+        '@highlightjs/cdn-assets': '^11.11.1',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.3',
-        '@solidjs/start': '^1.1.7',
+        '@solidjs/start': '^1.2.0',
         '@types/markdown-it': '^14.1.2',
-        '@types/node': '^24.3.0',
-        'ag-grid-community': '^34.2.0',
-        'chart.js': '^4.5.0',
+        '@types/node': '^24.10.0',
+        'ag-grid-community': '^34.3.1',
+        'chart.js': '^4.5.1',
+        'highlight.js': '^11.11.1',
         'markdown-it': '^14.1.0',
-        'solid-js': '^1.9.9',
-        typescript: '^5.9.2',
+        'solid-js': '^1.9.10',
+        typescript: '^5.9.3',
         valibot: '^1.1.0',
         vinxi: '^0.5.8',
       }
@@ -97,7 +98,7 @@ class Build {
       writeFile(join(newProjectDir, '.env'), this.#renderDotEnv(), 'utf8'),
       writeFile(join(newProjectDir, 'package.json'), JSON.stringify(this.#renderPackageDotJson(), null, 2), 'utf8'),
       writeFile(join(newProjectDir, '.gitignore'), this.#renderGitIgnore(), 'utf8'),
-      writeFile(join(newProjectDir, 'wrangler.toml'), this.#renderWranglerDotToml(), 'utf8'),
+      writeFile(join(newProjectDir, 'wrangler.jsonc'), this.#renderWranglerJsonc(), 'utf8'),
     )
 
     await Promise.all(writePromises)
@@ -105,10 +106,11 @@ class Build {
 
 
   #renderDotEnv() {
-    return `ENV=local
-JWT_SECRET=${ randomBytes(64).toString('base64') }
+    return `JWT_SECRET=${ randomBytes(64).toString('base64') }
 SESSION_SECRET=${ randomBytes(64).toString('base64') }
-`
+LIVE_SECRET=${ randomBytes(64).toString('base64') }
+
+# npx wrangler secret put\n`
   }
 
 
@@ -181,7 +183,7 @@ ${cuteString('Please enter a 1, 2, or 3 and then press [return]:', 'magenta', 'b
       }
     }
 
-    rl.close();
+    rl.close()
   }
 
 
@@ -217,9 +219,17 @@ app.config.timestamp*\n`
   }
 
 
-  #renderWranglerDotToml() {
-    return `name = "${this.projectName}"
-compatibility_date = "${getWranglerCompatabilityDate()}"\n`
+  #renderWranglerJsonc() {
+    return `{
+  "name": "${this.projectName}",
+  "compatibility_date": "${getWranglerCompatabilityDate()}",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "observability": {
+    "enabled": true
+  }
+}`
   }
 }
 

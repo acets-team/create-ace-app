@@ -44,16 +44,6 @@ main.home {
     }
   }
 
-  .markdown {
-    h2 {
-      text-align: center;
-    }
-
-    h4 {
-      margin-bottom: -6px;
-    }
-  }
-
   .summaries {
     display: flex;
     flex-wrap: wrap;
@@ -130,6 +120,36 @@ main.home {
           display: flex;
           align-items: center;
           justify-content: end;
+        }
+      }
+
+      .transactions-load {
+        height: 46.7rem;
+      }
+
+      .categories-load {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+
+        .left {
+          flex: 1;
+          .ace-pulse {
+            height: auto;
+            aspect-ratio: 1.01/1;
+          }
+        }
+
+        .right {
+          flex: 1;
+
+          .ace-pulse {
+            height: auto;
+            aspect-ratio: 2.1/1;
+            &:first-child {
+              margin-bottom: var(--space-lite);
+            }
+          }
         }
       }
 

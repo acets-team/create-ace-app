@@ -1,5 +1,6 @@
 import './Nav.css'
 import { Show } from 'solid-js'
+import { showToast } from '@ace/toast'
 import { Refresh } from '@src/lib/Refresh'
 import { Tabs, RouteTab } from '@ace/tabs'
 import { Counter } from '@src/lib/Counter'
@@ -7,7 +8,14 @@ import { useStore } from '@src/store/store'
 
 
 export function Nav (props?: {showRefresh?: boolean}) {
-  const {set} = useStore()
+  const {set, store} = useStore()
+
+  const onRefreshClick = () => {
+    if (store.count) {
+      set('count', 0)
+      showToast({ type: 'success', value: '❤️ Clear!' })
+    }
+  }
 
   return <>
     <nav>
@@ -24,7 +32,7 @@ export function Nav (props?: {showRefresh?: boolean}) {
       />
 
       <Show when={props?.showRefresh}>
-        <Refresh onClick={() => set('count', 0)} tooltipContent="Refresh Count" />
+        <Refresh onClick={onRefreshClick} tooltipContent="Refresh Count" />
       </Show>
     </nav>
   </>

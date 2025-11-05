@@ -1,64 +1,59 @@
 import './Chat.css'
 import { For } from 'solid-js'
 import { Route } from '@ace/route'
-import { Title } from '@solidjs/meta'
-import { emojis } from '@src/lib/vars'
+import { kParse } from '@ace/kParse'
+import { buildOrigin } from '@ace/env'
 import { svg_up } from '@src/lib/svgs'
+import { Messages } from '@ace/messages'
 import { Refresh } from '@src/lib/Refresh'
 import { useStore } from '@src/store/store'
+import { Title, Meta } from '@solidjs/meta'
 import RootLayout from '@src/app/RootLayout'
+import { apiSaveChatMessage } from '@ace/apis'
 import { refFormReset } from '@ace/refFormReset'
 import { createOnSubmit } from '@ace/createOnSubmit'
 import { showToast, showErrorToast } from '@ace/toast'
-import { randomArrayItem } from '@ace/randomArrayItem'
+import { apiSaveChatMessageParser } from '@src/parsers/apiSaveChatMessageParser'
 import { SmoothFor, defaultSmoothForAnimateKeyframesChat } from '@ace/smoothFor'
 
 
 export default new Route('/chat')
   .layouts([RootLayout])
-  .component(() => {
+  .component((scope) => {
     const {set, sync, store, refBind} = useStore()
 
     const smoothFor = new SmoothFor({ parent: '#chat-messages', children: '.message' })
     
     const onSubmit = createOnSubmit(({ event }) => {
-      if (!store.chatMessage) return showErrorToast('Need an internet lesson?! 👩‍🏫')
+      const body = kParse(apiSaveChatMessageParser, { chatMessage: store.chatMessage })
 
       smoothFor.preSync()
 
-      sync(
-        'chatMessages',
-        [
-          ...store.chatMessages,
-          {
-            userType: 'me',
-            id: crypto.randomUUID(),
-            message: store.chatMessage,
-          },
-          {
-            userType: 'friend',
-            id: crypto.randomUUID(),
-            message: randomArrayItem(emojis),
-          },
-        ]
-      )
-
-      smoothFor.postSync({scrollParentToBottom: true})
-
-      event.currentTarget.reset()
+      apiSaveChatMessage({
+        body,
+        onSuccess(d) {
+          sync('chatMessages', [...store.chatMessages, ...d])
+          smoothFor.postSync({ scrollParentToBottom: true })
+          event.currentTarget.reset()
+        }
+      })
     })
 
 
-    const onResetClick = () => {
-      if (!store.chatMessages.length) return showErrorToast('Need an internet lesson?! 👩‍🏫')
-
-      set('chatMessages', [])
-      showToast({type: 'success', value: 'Success!'})
+    const onRefreshClick = () => {
+      set('chatMessage', '') // clear input
+      set('chatMessages', []) // clear chat messages
+      scope.messages.set({ name: 'chatMessage', value: [] }) // clear error messages
+      showToast({ type: 'success', value: '❤️ Clear!' })
     }
 
 
     return <>
-      <Title>💬 Chat</Title>
+      <Title>💬 Chat · Create Ace App</Title>
+      <Meta property="og:title" content="💬 Chat · Create Ace App" />
+      <Meta property="og:type" content="website" />
+      <Meta property="og:url" content={buildOrigin + '/chat'} />
+      <Meta property="og:image" content={buildOrigin + '/og/chat.webp'} />
 
       <main class="chat">
         <div class="head">💬 Chat</div>
@@ -69,11 +64,12 @@ export default new Route('/chat')
         </div>
 
         <form onSubmit={onSubmit} ref={refFormReset()}>
-          <Refresh onClick={onResetClick} tooltipContent="Refresh Chat" />
-          <input ref={refBind('chatMessage')} type="text" placeholder="Type a message..." autocomplete="off" />
-          <button type="submit">
-            {svg_up()}
-          </button>
+          <div class="top">
+            <Refresh onClick={onRefreshClick} tooltipContent="Refresh Chat" />
+            <input ref={refBind('chatMessage')} name="chatMessage" type="text" placeholder="Type a message..." autocomplete="off" />
+            <button type="submit" aria-label="Send chat message">{svg_up()}</button>
+          </div>
+          <Messages name="chatMessage" />
         </form>
       </main>
     </>

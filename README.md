@@ -1,6 +1,11 @@
-# 🧚‍♀️ Create `Ace` App!
+![Ace Website Framework](https://i.imgur.com/cNfquMD.png)
+
+
+## Create Ace App!
 ```bash
-nvm use 24 && npx create-ace-app@latest
+npx create-ace-app@latest
 ```
 
-![Ace, the typesafetiest framework!](https://i.imgur.com/qoibppy.png)
+## Documentation
+- [NPM](https://www.npmjs.com/package/@acets-team/ace)
+- [GitHub](https://github.com/acets-team/ace)

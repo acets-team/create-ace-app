@@ -10,10 +10,11 @@ export const config = {
     local: ['http://localhost:3000', 'http://localhost:3001']
   },
   plugins: {
+    hljs: true,
     solid: true,
-    valibot: true,
     agGrid: true,
-    markdownIt: true,
+    valibot: true,
     chartjs: true,
+    markdownIt: true,
   }
 }

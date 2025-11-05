@@ -17,14 +17,13 @@
     "url": "git+https://github.com/acets-team/create-ace-app.git"
   },
   "scripts": {
-    "prepublishOnly": "npm run build && npm run build-cli",
-    "dev": "ace build local && ace sw && vinxi dev",
-    "dev-fresh": "rm -rf .ace && npm run dev",
     "build": "ace build prod && ace sw && vinxi build",
-    "cloud": "git push && npm publish --access public",
-    "typesafe": "tsc --project tsconfig.typesafe.json",
     "build-cli": "ace build local && tsc -p cli.tsconfig.json && (chmod +x cli.js || true)",
-    "pre-cloud": "npm run typesafe && npm version patch && npm run dev"
+    "prepublishOnly": "npm run build && npm run build-cli",
+    "publish": "npm publish --access public",
+    "typesafe": "tsc --project tsconfig.typesafe.json",
+    "dev": "ace build local && ace sw && vinxi dev",
+    "dev-fresh": "rm -rf .ace && npm run dev"
   },
   "keywords": [
     "solid",
@@ -35,17 +34,19 @@
     "wizard"
   ],
   "devDependencies": {
-    "@acets-team/ace": "^0.5.0",
+    "@acets-team/ace": "^0.6.1",
+    "@highlightjs/cdn-assets": "^11.11.1",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",
-    "@solidjs/start": "^1.1.7",
+    "@solidjs/start": "^1.2.0",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^24.3.0",
-    "ag-grid-community": "^34.2.0",
-    "chart.js": "^4.5.0",
+    "@types/node": "^24.10.0",
+    "ag-grid-community": "^34.3.1",
+    "chart.js": "^4.5.1",
+    "highlight.js": "^11.11.1",
     "markdown-it": "^14.1.0",
-    "solid-js": "^1.9.9",
-    "typescript": "^5.9.2",
+    "solid-js": "^1.9.10",
+    "typescript": "^5.9.3",
     "valibot": "^1.1.0",
     "vinxi": "^0.5.8"
   }
