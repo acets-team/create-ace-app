@@ -7,6 +7,7 @@ export const config = {
   appDir: './src/app',
   logCaughtErrors: true,
   origins: {
+    prod: 'https://create-ace-app.jquery-ssr.workers.dev/',
     local: ['http://localhost:3000', 'http://localhost:3001']
   },
   plugins: {
