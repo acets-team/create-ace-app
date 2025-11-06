@@ -18,7 +18,7 @@ export function Nav (props?: {showRefresh?: boolean}) {
   }
 
   return <>
-    <nav>
+    <nav classList={{ 'refresh-visible': props?.showRefresh }}>
       <Counter />
 
       <Tabs

@@ -5,6 +5,25 @@
 
 
 
+## [0.7.2] - 2025-11-06
+
+### ✨ Added
+- Mobile/App meta tags
+
+### 🧠 Improved
+- Mobile first/friendly styling @:
+    - Nav
+    - Charts
+    - Table columns
+    - Visualization header
+- Improve link color @ Markdown
+- Updated the version of:
+    - @acets-team/ace to `0.6.6`
+
+### 🐛 Fixed
+- Fortunes loading is not centered
+
+
 ## [0.7.1] - 2025-11-05
 
 ### 🧠 Improved

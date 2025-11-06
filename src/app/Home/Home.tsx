@@ -284,11 +284,13 @@ function Transactions() {
                 {
                   sort: 'desc',
                   field: 'date',
+                  minWidth: 300,
                   filter: 'agDateColumnFilter',
                   cellRenderer: agGridCellRenderer({ component: TableCellDate }),
                 },
-                { field: 'description', filter: 'agTextColumnFilter', },
+                { field: 'description', filter: 'agTextColumnFilter', minWidth: 210 },
                 {
+                  minWidth: 120,
                   field: 'amount',
                   sortable: false,
                   cellStyle: { textAlign: 'right' },

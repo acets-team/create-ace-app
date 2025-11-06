@@ -30,6 +30,9 @@ main.fortunes {
         align-items: center;
         justify-content: center;
       }
+      &[aria-busy="true"] {
+        font-size: 2.7rem;
+      }
 
       &.refresh {
         width: 5.1rem;

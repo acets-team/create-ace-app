@@ -3,6 +3,9 @@ nav {
   justify-content: center;
   gap: 0.9rem;
   margin: 0 var(--space-lite);
+  &.refresh-visible {
+    flex-wrap: wrap;
+  }
 
   a {
     &.active, &:hover {

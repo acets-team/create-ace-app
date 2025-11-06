@@ -90,11 +90,22 @@ main.home {
       .head {
         margin: 0.6rem 0 1.5rem 0;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+
+        @media only screen and (min-width: 480px) { /* big screen */
+          align-items: center;
+          flex-direction: row;
+          justify-content:space-between;
+        }
 
         h2 {
-          margin: 0;
+          margin: 0 0 0.45rem 0;
+          text-align: center;
+
+          @media only screen and (min-width: 480px) { /* big screen */
+            margin: 0;
+            text-align: left;
+          }
         }
 
         .buttons {
@@ -102,6 +113,14 @@ main.home {
           display: flex;
           align-items: center;
           justify-content: end;
+
+          .brand:not(.refresh) {
+            width: 100%;
+
+            @media only screen and (min-width: 480px) { /* big screen */
+              width: auto;
+            }
+          }
         }
       }
 
@@ -139,11 +158,12 @@ main.home {
         &.two-col {
           gap: 1.5rem;
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: space-between;
 
-          @media only screen and (max-width: 720px) {
-            flex-direction: column;
+          @media only screen and (min-width: 720px) { /* big screen */
+            flex-direction: row;
           }
         }
 
@@ -151,21 +171,22 @@ main.home {
           width: 100%;
 
           &.doughnut {
-            max-width: 50% !important;
+            max-width: 100% !important;
             aspect-ratio: 1 / 1 !important;
             height: auto !important;
 
-            @media only screen and (max-width: 720px) {
-              max-width: 100% !important;
+            @media only screen and (min-width: 720px) { /* big screen */
+              max-width: 50% !important;
             }
           }
         }
 
         .charts {
           flex: 1;
+          width: 100%;
 
-          @media only screen and (max-width: 720px) {
-            width: 100%;
+          @media only screen and (min-width: 720px) { /* big screen */
+            width: auto;
           }
 
           canvas {

@@ -24,6 +24,8 @@ In this markdown we'll quickly relay what this site/app does! ❤️ With great 
 1. SEO Friendly Markdown w/ Code Highlight Support from a `.md` file ✅
 
 ```ts
+// Create Ace App > Home.tsx (aka the code that creates this page 💚)
+
 export default new Route('/')
   .layouts([RootLayout])
   .component(() => {
