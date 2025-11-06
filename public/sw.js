@@ -2,7 +2,7 @@
 
 import { swAddOffLineSupport } from './.ace/swAddOffLineSupport.js'
 
-const packageDotJsonVersion = '0.7.1'
+const packageDotJsonVersion = '0.7.2'
 
 swAddOffLineSupport({
   installUrls: ['/', '/chat', '/fortunes'],
