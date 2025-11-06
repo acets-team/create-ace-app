@@ -29,12 +29,7 @@ export default new Route('/')
   .component(() => {
     const {sync} = useStore()
 
-    apiGetCashFlow({ // api's load simultaneously btw ❤️
-      queryType: 'stream',
-      onSuccess: (d) => sync('cashFlow', d)
-    })
-
-    apiGetTransactions({
+    apiGetTransactions({ // api's load simultaneously btw ❤️
       queryType: 'stream',
       onSuccess: (d) => sync('transactions', d)
     })

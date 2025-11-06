@@ -24,8 +24,8 @@ import { MarkdownItStatic } from '@ace/markdownItStatic'
 import { registerAgGrid } from '@src/init/registerAgGrid'
 import { registerChartJs } from '@src/init/registerChartJs'
 import { agGridCellRenderer } from '@ace/agGridCellRenderer'
+import { apiGetFinances, apiGetTransactions } from '@ace/apis'
 import type { FinanceSummary, Transaction } from '@src/lib/types'
-import { apiGetFinances, apiGetCashFlow, apiGetTransactions } from '@ace/apis'
 
 
 export default new Route('/')
@@ -33,29 +33,16 @@ export default new Route('/')
   .component(() => {
     const {sync} = useStore()
 
-    apiGetCashFlow({ // api's load simultaneously btw ❤️
-      queryType: 'stream',
-      onSuccess: (d) => sync('cashFlow', d)
-    })
-
-    apiGetTransactions({
+    apiGetTransactions({ // api's load simultaneously btw ❤️
       queryType: 'stream',
       onSuccess: (d) => sync('transactions', d)
     })
-    console.log('above apiGetFinances')
 
     apiGetFinances({
       queryType: 'stream',
       onSuccess(d) {
-        console.log('onSuccess', d)
         sync('financeSummary', d.summary)
         sync('financeCategories', d.categories)
-      },
-      onError(e) {
-        console.log('onError', e)
-      },
-      onResponse(r) {
-        console.log('onResponse', r)
       }
     })
 
@@ -77,7 +64,7 @@ export default new Route('/')
 
         <section class="vizs">
           <Categories />
-          <Transactions/>
+          <Transactions />
         </section>
 
         <MarkdownItStatic content={mdAppInfo} registerHljs={registerHljs} $div={{ class: 'markdown' }} />

@@ -5,6 +5,20 @@
 
 
 
+## [0.6.3] - 2025-11-05
+
+### 🧠 Improved
+- Updated the version of:
+    - @acets-team/ace to `0.6.3`
+
+### 🗑️ Removed
+- Removed unused `apiGetCashFlow()`
+- Removed unused `atoms` > `cashFlow`
+- Removed unused `atoms` > `buildStats`
+- Removed unused `markdown-incoming` css
+
+
+
 ## [0.6.2] - 2025-11-04
 
 ### 🧠 Improved
@@ -55,6 +69,7 @@
 
 
 
-[0.6.1]: https://github.com/acets-team/create-ace-app/compare/v0.6.1...v0.6.2
+[0.6.3]: https://github.com/acets-team/create-ace-app/compare/v0.6.2...v0.6.3
+[0.6.2]: https://github.com/acets-team/create-ace-app/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/acets-team/create-ace-app/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/acets-team/create-ace-app/releases/tag/v0.6.0

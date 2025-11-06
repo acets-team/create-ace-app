@@ -26,24 +26,6 @@ main.home {
     }
   }
 
-  .markdown-incoming {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .ace-pulse {
-      &.h1 {
-        width: 24rem;
-        margin: 3rem 0;
-      }
-      &.p {
-        width: 100%;
-        margin-bottom: 5rem;
-      }
-    }
-  }
-
   .summaries {
     display: flex;
     flex-wrap: wrap;

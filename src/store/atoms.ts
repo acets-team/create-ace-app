@@ -5,9 +5,7 @@ import type { FinanceSummary, Transaction, ChatMessage } from '@src/lib/types'
 
 export const atoms = {
   count: new Atom({ save: 'idb', is: 'number', init: 0 }),
-  buildStats: new Atom({ save: 'idb', is: 'string', init: '' }),
   chatMessage: new Atom({ save: 'idb', is: 'string', init: '' }),
-  cashFlow: new Atom<ChartJsMap[]>({ save: 'idb', is: 'json', init: [] }),
   chatMessages: new Atom<ChatMessage[]>({ save: 'idb', is: 'json', init: [] }),
   transactions: new Atom<Transaction[]>({ save: 'idb', is: 'json', init: [] }),
   financeCategories: new Atom<ChartJsMap[]>({ save: 'idb', is: 'json', init: [] }),
