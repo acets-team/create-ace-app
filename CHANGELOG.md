@@ -5,7 +5,14 @@
 
 
 
-## [0.6.3] - 2025-11-05
+## [0.7.1] - 2025-11-05
+
+### 🧠 Improved
+- Version numbers
+
+
+
+## [0.7.0] - 2025-11-05
 
 ### 🧠 Improved
 - Updated the version of:
@@ -69,7 +76,8 @@
 
 
 
-[0.6.3]: https://github.com/acets-team/create-ace-app/compare/v0.6.2...v0.6.3
+[0.7.1]: https://github.com/acets-team/create-ace-app/compare/v0.7.0...v0.7.1
+[0.7.0]: https://github.com/acets-team/create-ace-app/compare/v0.6.2...v0.7.0
 [0.6.2]: https://github.com/acets-team/create-ace-app/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/acets-team/create-ace-app/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/acets-team/create-ace-app/releases/tag/v0.6.0
