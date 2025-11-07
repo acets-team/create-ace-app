@@ -62,7 +62,7 @@ a.brand,
 button.brand,
 .ace-tabs.pill .marker {
   border: 1px solid #333;
-  background-color: #1e1e1e;
+  background-color: #0d1324;
 }
 
 
@@ -71,7 +71,6 @@ button.brand {
   color: #ffffff;
   border-radius: 999px;
   &:hover {
-    background-color: #2a2a2a;
     color: #00d8ff;
     transform: translateY(-3px);
     box-shadow: 0 4px 20px rgba(0, 216, 255, 0.1);
@@ -193,4 +192,8 @@ main {
     overflow: auto;
     border-radius: 1.2rem;
   }
+}
+
+.counter {
+  touch-action: manipulation;
 }
