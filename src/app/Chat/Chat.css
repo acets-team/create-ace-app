@@ -99,6 +99,9 @@ main.chat {
       display: flex;
       justify-content: center;
       align-items: center;
+      box-shadow: 0 3px 10px rgba(0, 122, 255, 0.35), /* outer glow */
+        inset 0 1px 2px rgba(255, 255, 255, 0.15), /* light inner */
+        inset 0 -2px 4px rgba(0, 0, 0, 0.35); /* dark inner */
     
       &:disabled {
         cursor: default;
@@ -107,7 +110,7 @@ main.chat {
     
       &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(0, 216, 255, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 216, 255, 0.3); /* outer glow */
       }
     }
   }

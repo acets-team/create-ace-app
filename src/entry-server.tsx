@@ -13,7 +13,7 @@ export default createHandler(() => (
 
           <meta name="description" content="Create Ace App is a showcase for what is possible w/ Ace!" />
 
-          {/* disables manual user zooming */}
+          {/* disables manual user zooming 🚨 browsers may ignore */}
           <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
           {/* enhance how the site looks when added to an iOS device's home screen */}

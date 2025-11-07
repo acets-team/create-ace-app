@@ -53,6 +53,7 @@ button.brand,
   user-select: none;
   padding: 0.9rem 1.5rem;
   cursor: pointer;
+  touch-action: manipulation; /* stop double taps on buttons from zooming in on mobile */
   &:disabled {
     cursor: default;
   }
@@ -61,8 +62,10 @@ button.brand,
 a.brand,
 button.brand,
 .ace-tabs.pill .marker {
-  border: 1px solid #333;
+  border: none;
   background-color: #0d1324;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35), /* outer shadow */
+    0 1px 2px rgba(255, 255, 255, 0.05) inset; /* inner highlight */
 }
 
 
@@ -73,16 +76,25 @@ button.brand {
   &:hover {
     color: #00d8ff;
     transform: translateY(-3px);
-    box-shadow: 0 4px 20px rgba(0, 216, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), /* outer darker shadow */
+      0 1px 2px rgba(255, 255, 255, 0.08) inset, /* inner highlight */
+      0 4px 20px rgba(0, 216, 255, 0.1); /* outer cyan glow */
   }
   &.gold {
     background-color: #2a2a2a;
     color: #f5c518;
-    box-shadow: 0 4px 20px rgba(245,197,24,0.3);
-    transform: translateY(-3px);
+    transition: var(--transition);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px rgba(245, 197, 24, 0.3), /* outer gold glow */
+        inset 0 1px 2px rgba(255, 255, 255, 0.1), /* inner top highlight */
+        inset 0 -2px 4px rgba(0, 0, 0, 0.4); /* inner depth */
+
     &:hover {
-      background-color: #3a3200;;
+      background-color: #3a3200;
       color: #fec701;
+      box-shadow: 0 5px 25px rgba(245, 197, 24, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.12),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.45);
     }
   }
   &.refresh {
@@ -192,8 +204,4 @@ main {
     overflow: auto;
     border-radius: 1.2rem;
   }
-}
-
-.counter {
-  touch-action: manipulation;
 }

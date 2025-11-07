@@ -5,7 +5,7 @@ export function Counter() {
   const {set, store} = useStore()
 
   return <>
-    <button class="counter brand" onClick={() => set('count', store.count + 1)} type="button">
+    <button class="brand" onClick={() => set('count', store.count + 1)} type="button">
       Count: {store.count}
     </button>
   </>

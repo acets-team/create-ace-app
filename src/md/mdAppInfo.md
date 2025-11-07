@@ -3,8 +3,8 @@
 In this markdown we'll quickly relay what this site/app does! ❤️ With great power comes great responsibility!
 
 ### ⚙️ General
-1. Can be installed as a <a href="https://github.com/acets-team/ace?tab=readme-ov-file#create-desktop-application" target="_blank">Desktop application</a> ✅
-<img src="https://i.imgur.com/KPXGwRm.png" alt="Create Ace App" loading="lazy" />
+1. Can be installed as a [Desktop application](https://github.com/acets-team/ace?tab=readme-ov-file#create-desktop-application) ✅
+<img src="https://i.imgur.com/Nyd6HdL.png" alt="Create Ace App" loading="lazy" />
 
 ### 🧠 State
 1. State saved through refresh & while offline ✅
