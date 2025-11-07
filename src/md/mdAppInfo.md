@@ -4,7 +4,7 @@ In this markdown we'll quickly relay what this site/app does! ❤️ With great 
 
 ### ⚙️ General
 1. Can be installed as a [Desktop application](https://github.com/acets-team/ace?tab=readme-ov-file#create-desktop-application) ✅
-<img src="https://i.imgur.com/Nyd6HdL.png" alt="Create Ace App" loading="lazy" width="2498" height="2110" style="width: 100%; height: auto;" />
+<img src="https://i.imgur.com/irIUHOp_d.webp?maxwidth=1520&fidelity=grand" alt="Create Ace App" loading="lazy" width="1280" height="1081" style="width: 100%; height: auto;" />
 
 ### 🧠 State
 1. State saved through refresh & while offline ✅
