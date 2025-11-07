@@ -51,7 +51,7 @@ class Build {
         'bump': 'ace build local && ace sw'
       },
       devDependencies: {
-        '@acets-team/ace': '^0.6.7',
+        '@acets-team/ace': '^0.7.0',
         '@highlightjs/cdn-assets': '^11.11.1',
         '@solidjs/meta': '^0.29.4',
         '@solidjs/router': '^0.15.3',

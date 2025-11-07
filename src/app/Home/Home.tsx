@@ -26,6 +26,7 @@ import { registerChartJs } from '@src/init/registerChartJs'
 import { agGridCellRenderer } from '@ace/agGridCellRenderer'
 import { apiGetFinances, apiGetTransactions } from '@ace/apis'
 import type { FinanceSummary, Transaction } from '@src/lib/types'
+import { hljsMarkdownItOptions } from '@ace/hljsMarkdownItOptions'
 
 
 export default new Route('/')
@@ -67,7 +68,7 @@ export default new Route('/')
           <Transactions />
         </section>
 
-        <MarkdownItStatic content={mdAppInfo} registerHljs={registerHljs} $div={{ class: 'markdown' }} />
+        <MarkdownItStatic content={mdAppInfo} registerHljs={registerHljs} options={{ highlight: hljsMarkdownItOptions }} $div={{ class: 'markdown' }} />
 
         <Nav showRefresh={true} />
       </main>
