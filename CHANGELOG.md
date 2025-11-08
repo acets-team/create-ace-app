@@ -5,6 +5,17 @@
 
 
 
+## [0.8.0] - 2025-11-08
+
+### 🧠 Improved
+- Updated the version of:
+    - @acets-team/ace to `0.8.0`
+- Update `Home.tsx` og image
+- Add consistency to `viz` > `brand` buttons to avoid layout shift on refresh show/hide
+- Improve markdown copy
+
+
+
 ## [0.7.5] - 2025-11-06
 
 ### 🐛 Fixed

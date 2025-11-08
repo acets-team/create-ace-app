@@ -20,7 +20,7 @@
     "build": "ace build prod && ace sw && vinxi build",
     "build-cli": "ace build local && tsc -p cli.tsconfig.json && (chmod +x cli.js || true)",
     "prepublishOnly": "npm run build && npm run build-cli",
-    "publish": "npm publish --access public",
+    "pub": "npm publish --access public",
     "typesafe": "tsc --project tsconfig.typesafe.json",
     "dev": "ace build local && ace sw && vinxi dev",
     "dev-fresh": "rm -rf .ace && npm run dev",
@@ -35,7 +35,7 @@
     "wizard"
   ],
   "devDependencies": {
-    "@acets-team/ace": "^0.7.1",
+    "@acets-team/ace": "^0.8.0",
     "@highlightjs/cdn-assets": "^11.11.1",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",

@@ -114,6 +114,10 @@ main.home {
           align-items: center;
           justify-content: end;
 
+          .brand {
+            height: 4.5rem;
+          }
+
           .brand:not(.refresh) {
             width: 100%;
 
