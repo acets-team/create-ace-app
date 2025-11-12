@@ -5,7 +5,7 @@
   "version": "0.9.1",
   "author": "https://github.com/acets-team",
   "homepage": "https://github.com/acets-team/create-ace-app#readme",
-  "description": "❤️ npx create-ace-app@latest runs a script to create an Ace application!",
+  "description": "❤️ The purpose of Create Ace App is to showcase lovely features available w/ Ace & simply replicated via npx create-ace-app@latest ✅",
   "bin": {
     "create-ace-app": "./cli.js"
   },

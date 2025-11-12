@@ -5,6 +5,13 @@
 
 
 
+## [0.9.2] - 2025-11-11
+
+### 🧠 Improved
+- OG Description @ `Home.tsx`
+
+
+
 ## [0.9.1] - 2025-11-11
 
 ### 🧠 Improved

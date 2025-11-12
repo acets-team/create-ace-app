@@ -53,6 +53,7 @@ export default new Route('/')
       <Meta property="og:type" content="website" />
       <Meta property="og:url" content={buildOrigin} />
       <Meta property="og:image" content={buildOrigin + '/og/home.webp'} />
+      <Meta property="og:description" content="❤️ The purpose of Create Ace App is to showcase lovely features available w/ Ace & simply replicated via npx create-ace-app@latest ✅" />
 
       <main class="home">
         <Welcome />
