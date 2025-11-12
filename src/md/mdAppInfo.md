@@ -1,6 +1,6 @@
 ## 🤓 `Markdown Example`
 
-This SEO friendly `markdown` ❤️ aims to briefly summarize what's included w/ `Create Ace App`!
+This SEO friendly `markdown` ❤️ aims to briefly summarize what's included with `Create Ace App`!
 
 ### ⚙️ General
 1. `Create Ace App` can be installed as a [`Desktop application`](https://github.com/acets-team/ace?tab=readme-ov-file#create-desktop-application) ✅

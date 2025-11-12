@@ -1,5 +1,4 @@
 /**
- * - Alphabetical Please
  * - 200,000 free icons: https://icones.js.org/collection/all
  * - This file if for svg icons, not for huge svg's they can go in their own file & added to a <img /> src
  * - SVG's as functions is nice once you wanna send props like height & width

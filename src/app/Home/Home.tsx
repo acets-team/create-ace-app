@@ -39,7 +39,7 @@ export default new Route('/')
       onSuccess: (d) => sync('transactions', d)
     })
 
-    apiGetFinances({
+    apiGetFinances({ // on refresh => requests start on the BE 🤓
       queryType: 'stream',
       onSuccess(d) {
         sync('financeSummary', d.summary)

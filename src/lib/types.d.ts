@@ -1,4 +1,4 @@
-import type  { DateLike } from '@ace/types'
+import type  { DateLike } from '@ace/vanilla'
 
 
 export type FinanceSummary = {
