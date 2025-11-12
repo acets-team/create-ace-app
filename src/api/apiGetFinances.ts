@@ -4,7 +4,7 @@ import type { FinanceSummary } from '@src/lib/types'
 
 
 export const GET = new API('/api/get-finances', 'apiGetFinances')
-  .resolve(async (scope) => {
+  .resolve((scope) => {
     return scope.success({
       summary: getSummary(),
       categories: getCategories(),

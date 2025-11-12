@@ -5,6 +5,14 @@
 
 
 
+## [0.9.4] - 2025-11-12
+
+### 🧠 Improved
+- Updated the version of:
+    - @acets-team/ace to `0.9.5`
+
+
+
 ## [0.9.3] - 2025-11-11
 
 ### 🧠 Improved
@@ -160,6 +168,10 @@
 
 
 
+[0.9.4]: https://github.com/acets-team/create-ace-app/compare/v0.9.3...v0.9.4
+[0.9.3]: https://github.com/acets-team/create-ace-app/compare/v0.9.2...v0.9.3
+[0.9.2]: https://github.com/acets-team/create-ace-app/compare/v0.9.1...v0.9.2
+[0.9.1]: https://github.com/acets-team/create-ace-app/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/acets-team/create-ace-app/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/acets-team/create-ace-app/compare/v0.7.5...v0.8.0
 [0.7.5]: https://github.com/acets-team/create-ace-app/compare/v0.7.4...v0.7.5

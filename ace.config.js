@@ -3,8 +3,8 @@
 /** @type {import('@acets-team/ace').AceConfig} */
 export const config = {
   sw: true,
-  apiDir: './src/api',
-  appDir: './src/app',
+  apiDir: 'src/api',
+  appDir: 'src/app',
   logCaughtErrors: true,
   origins: {
     prod: 'https://create-ace-app.jquery-ssr.workers.dev',
