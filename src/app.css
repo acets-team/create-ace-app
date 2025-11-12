@@ -4,6 +4,7 @@
   --space: 3rem;
   --space-lite: 1.5rem;
   --transition: all 0.3s ease;
+  --prop-transition: 0.3s ease;
   --text-color: #f0f0f0;
   --link-color: #00d8ff;
   --bg-color: rgb(15 23 42 / var(--tw-bg-opacity, 1));
@@ -68,6 +69,14 @@ button.brand,
     0 1px 2px rgba(255, 255, 255, 0.05) inset; /* inner highlight */
 }
 
+.ace-tabs.pill {
+  .tab {
+    &.active,
+    &:hover {
+      color: #00d8ff !important;
+    }
+  }
+}
 
 a.brand,
 button.brand {
@@ -84,11 +93,10 @@ button.brand {
     background-color: #2a2a2a;
     color: #f5c518;
     transition: var(--transition);
-      transform: translateY(-3px);
-      box-shadow: 0 4px 20px rgba(245, 197, 24, 0.3), /* outer gold glow */
-        inset 0 1px 2px rgba(255, 255, 255, 0.1), /* inner top highlight */
-        inset 0 -2px 4px rgba(0, 0, 0, 0.4); /* inner depth */
-
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(245, 197, 24, 0.3), /* outer gold glow */
+      inset 0 1px 2px rgba(255, 255, 255, 0.1), /* inner top highlight */
+      inset 0 -2px 4px rgba(0, 0, 0, 0.4); /* inner depth */
     &:hover {
       background-color: #3a3200;
       color: #fec701;
@@ -195,7 +203,7 @@ main {
   }
 
   a {
-    color: rgb(147, 197, 253);
+    color: #4fa2ff;
     text-decoration: underline;
   }
 

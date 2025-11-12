@@ -13,6 +13,7 @@ import { Refresh } from '@src/lib/Refresh'
 import { useStore } from '@src/store/store'
 import { Title, Meta } from '@solidjs/meta'
 import RootLayout from '@src/app/RootLayout'
+import { AceMarkdown } from '@ace/aceMarkdown'
 import mdAppInfo from '@src/md/mdAppInfo.md?raw'
 import { emojis, formatter } from '@src/lib/vars'
 import { randomBetween } from '@ace/randomBetween'
@@ -20,7 +21,6 @@ import { themeAgGrid } from '@src/init/themeAgGrid'
 import { registerHljs } from '@src/init/registerHljs'
 import { randomArrayItem } from '@ace/randomArrayItem'
 import { agGridComponent } from '@ace/agGridComponent'
-import { MarkdownItStatic } from '@ace/markdownItStatic'
 import { registerAgGrid } from '@src/init/registerAgGrid'
 import { registerChartJs } from '@src/init/registerChartJs'
 import { agGridCellRenderer } from '@ace/agGridCellRenderer'
@@ -68,7 +68,7 @@ export default new Route('/')
           <Transactions />
         </section>
 
-        <MarkdownItStatic content={mdAppInfo} registerHljs={registerHljs} options={{ highlight: hljsMarkdownItOptions }} $div={{ class: 'markdown' }} />
+        <AceMarkdown content={mdAppInfo} registerHljs={registerHljs} markdownItOptions={{ highlight: hljsMarkdownItOptions }} $div={{ class: 'markdown' }} />
 
         <Nav showRefresh={true} />
       </main>

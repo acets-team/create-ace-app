@@ -7,12 +7,6 @@ nav {
     flex-wrap: wrap;
   }
 
-  a {
-    &.active, &:hover {
-     color: #00d8ff !important;
-    }
-  }
-
   a, button {
     white-space: nowrap;
   }

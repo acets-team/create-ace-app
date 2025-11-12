@@ -33,9 +33,14 @@ main.fortunes {
       &[aria-busy="true"] {
         font-size: 2.7rem;
       }
-
       &.refresh {
         width: 5.1rem;
+      }
+      &.gold {
+        transition: color var(--prop-transition),
+          background-color var(--prop-transition),
+          box-shadow var(--prop-transition),
+          transform var(--prop-transition);
       }
     }
   }

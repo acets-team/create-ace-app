@@ -27,14 +27,13 @@ export default new Route('/chat')
     const onSubmit = createOnSubmit(({ event }) => {
       const body = kParse(apiSaveChatMessageParser, { chatMessage: store.chatMessage })
 
-      smoothFor.preSync()
-
       apiSaveChatMessage({
         body,
         onSuccess(d) {
+          event.currentTarget.reset() // reset form
+          smoothFor.preSync()
           sync('chatMessages', [...store.chatMessages, ...d])
-          smoothFor.postSync({ scrollParentToBottom: true })
-          event.currentTarget.reset()
+          smoothFor.postSync({ scrollParent: 'bottom' })
         }
       })
     })
