@@ -2,7 +2,7 @@
   "name": "create-ace-app",
   "license": "MIT",
   "type": "module",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "author": "https://github.com/acets-team",
   "homepage": "https://github.com/acets-team/create-ace-app#readme",
   "description": "❤️ The purpose of Create Ace App is to showcase lovely features available w/ Ace & simply replicated via npx create-ace-app@latest ✅",
